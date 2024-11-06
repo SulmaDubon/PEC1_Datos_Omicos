@@ -22,6 +22,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -47,46 +81,67 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#abstract" id="toc-abstract" class="nav-link active" data-scroll-target="#abstract"><span class="header-section-number">1</span> Abstract</a></li>
+  <li><a href="#abstracto" id="toc-abstracto" class="nav-link active" data-scroll-target="#abstracto"><span class="header-section-number">1</span> Abstracto</a>
+  <ul class="collapse">
+  <li><a href="#objetivos-específicos" id="toc-objetivos-específicos" class="nav-link" data-scroll-target="#objetivos-específicos"><span class="header-section-number">1.1</span> Objetivos Específicos</a></li>
+  <li><a href="#objetivo-del-estudio" id="toc-objetivo-del-estudio" class="nav-link" data-scroll-target="#objetivo-del-estudio"><span class="header-section-number">1.2</span> Objetivo del Estudio</a></li>
+  </ul></li>
   <li><a href="#materiales-y-métodos" id="toc-materiales-y-métodos" class="nav-link" data-scroll-target="#materiales-y-métodos"><span class="header-section-number">2</span> Materiales y Métodos</a>
   <ul class="collapse">
-  <li><a href="#descarga-de-los-datos-desde-el-repositorio-metabolomicsworkbench" id="toc-descarga-de-los-datos-desde-el-repositorio-metabolomicsworkbench" class="nav-link" data-scroll-target="#descarga-de-los-datos-desde-el-repositorio-metabolomicsworkbench"><span class="header-section-number">2.1</span> Descarga de los datos desde el repositorio “metabolomicsWorkbench”</a>
-  <ul class="collapse">
-  <li><a href="#preparacion-para-la-descarga" id="toc-preparacion-para-la-descarga" class="nav-link" data-scroll-target="#preparacion-para-la-descarga"><span class="header-section-number">2.1.1</span> Preparacion para la descarga</a></li>
-  <li><a href="#descargar-datos-del-estudio" id="toc-descargar-datos-del-estudio" class="nav-link" data-scroll-target="#descargar-datos-del-estudio"><span class="header-section-number">2.1.2</span> Descargar Datos del Estudio</a></li>
-  <li><a href="#leer-los-datos-y-revisar-su-estructura" id="toc-leer-los-datos-y-revisar-su-estructura" class="nav-link" data-scroll-target="#leer-los-datos-y-revisar-su-estructura"><span class="header-section-number">2.1.3</span> Leer los Datos y Revisar su Estructura</a></li>
+  <li><a href="#datos-utilizados" id="toc-datos-utilizados" class="nav-link" data-scroll-target="#datos-utilizados"><span class="header-section-number">2.1</span> Datos Utilizados</a></li>
+  <li><a href="#herramientas-y-librerías" id="toc-herramientas-y-librerías" class="nav-link" data-scroll-target="#herramientas-y-librerías"><span class="header-section-number">2.2</span> Herramientas y Librerías</a></li>
+  <li><a href="#procedimiento-general" id="toc-procedimiento-general" class="nav-link" data-scroll-target="#procedimiento-general"><span class="header-section-number">2.3</span> Procedimiento General</a></li>
   </ul></li>
-  <li><a href="#creacion-de-summarizedexperiment" id="toc-creacion-de-summarizedexperiment" class="nav-link" data-scroll-target="#creacion-de-summarizedexperiment"><span class="header-section-number">2.2</span> Creacion de SummarizedExperiment</a>
+  <li><a href="#resultados" id="toc-resultados" class="nav-link" data-scroll-target="#resultados"><span class="header-section-number">3</span> Resultados</a>
   <ul class="collapse">
-  <li><a href="#creacion-de-assays-y-coldata-para-el-summarizedexperiment" id="toc-creacion-de-assays-y-coldata-para-el-summarizedexperiment" class="nav-link" data-scroll-target="#creacion-de-assays-y-coldata-para-el-summarizedexperiment"><span class="header-section-number">2.2.1</span> Creacion de “assays” y “colData” para el SummarizedExperiment</a></li>
-  <li><a href="#descargar-metadatos-del-estudio" id="toc-descargar-metadatos-del-estudio" class="nav-link" data-scroll-target="#descargar-metadatos-del-estudio"><span class="header-section-number">2.2.2</span> Descargar Metadatos del Estudio</a></li>
-  <li><a href="#procesar-los-metadatos-desde-html" id="toc-procesar-los-metadatos-desde-html" class="nav-link" data-scroll-target="#procesar-los-metadatos-desde-html"><span class="header-section-number">2.2.3</span> Procesar los Metadatos desde HTML</a></li>
-  <li><a href="#crear-el-summarizedexperiment-utilizando-el-diccionario-de-metadatos" id="toc-crear-el-summarizedexperiment-utilizando-el-diccionario-de-metadatos" class="nav-link" data-scroll-target="#crear-el-summarizedexperiment-utilizando-el-diccionario-de-metadatos"><span class="header-section-number">2.2.4</span> Crear el SummarizedExperiment Utilizando el Diccionario de Metadatos</a></li>
-  <li><a href="#verificamos-summarizedexperiment" id="toc-verificamos-summarizedexperiment" class="nav-link" data-scroll-target="#verificamos-summarizedexperiment"><span class="header-section-number">2.2.5</span> Verificamos SummarizedExperiment</a></li>
+  <li><a href="#descarga-de-los-datos-desde-el-repositorio-metabolomicsworkbench" id="toc-descarga-de-los-datos-desde-el-repositorio-metabolomicsworkbench" class="nav-link" data-scroll-target="#descarga-de-los-datos-desde-el-repositorio-metabolomicsworkbench"><span class="header-section-number">3.1</span> Descarga de los datos desde el repositorio “metabolomicsWorkbench”</a>
+  <ul class="collapse">
+  <li><a href="#preparacion-para-la-descarga" id="toc-preparacion-para-la-descarga" class="nav-link" data-scroll-target="#preparacion-para-la-descarga"><span class="header-section-number">3.1.1</span> Preparacion para la descarga</a></li>
+  <li><a href="#descargar-datos-del-estudio" id="toc-descargar-datos-del-estudio" class="nav-link" data-scroll-target="#descargar-datos-del-estudio"><span class="header-section-number">3.1.2</span> Descargar Datos del Estudio</a></li>
+  <li><a href="#leer-los-datos-y-revisar-su-estructura" id="toc-leer-los-datos-y-revisar-su-estructura" class="nav-link" data-scroll-target="#leer-los-datos-y-revisar-su-estructura"><span class="header-section-number">3.1.3</span> Leer los Datos y Revisar su Estructura</a></li>
   </ul></li>
-  <li><a href="#exploracion-del-dataset" id="toc-exploracion-del-dataset" class="nav-link" data-scroll-target="#exploracion-del-dataset"><span class="header-section-number">2.3</span> Exploracion del dataset</a>
+  <li><a href="#creacion-de-summarizedexperiment" id="toc-creacion-de-summarizedexperiment" class="nav-link" data-scroll-target="#creacion-de-summarizedexperiment"><span class="header-section-number">3.2</span> Creacion de SummarizedExperiment</a>
   <ul class="collapse">
-  <li><a href="#informacion-del-estudio" id="toc-informacion-del-estudio" class="nav-link" data-scroll-target="#informacion-del-estudio"><span class="header-section-number">2.3.1</span> Informacion del estudio</a></li>
+  <li><a href="#creacion-de-assays-y-coldata-para-el-summarizedexperiment" id="toc-creacion-de-assays-y-coldata-para-el-summarizedexperiment" class="nav-link" data-scroll-target="#creacion-de-assays-y-coldata-para-el-summarizedexperiment"><span class="header-section-number">3.2.1</span> Creacion de “assays” y “colData” para el SummarizedExperiment</a></li>
+  <li><a href="#descargar-metadatos-del-estudio" id="toc-descargar-metadatos-del-estudio" class="nav-link" data-scroll-target="#descargar-metadatos-del-estudio"><span class="header-section-number">3.2.2</span> Descargar Metadatos del Estudio</a></li>
+  <li><a href="#procesar-los-metadatos-desde-html" id="toc-procesar-los-metadatos-desde-html" class="nav-link" data-scroll-target="#procesar-los-metadatos-desde-html"><span class="header-section-number">3.2.3</span> Procesar los Metadatos desde HTML</a></li>
+  <li><a href="#crear-el-summarizedexperiment-utilizando-el-diccionario-de-metadatos" id="toc-crear-el-summarizedexperiment-utilizando-el-diccionario-de-metadatos" class="nav-link" data-scroll-target="#crear-el-summarizedexperiment-utilizando-el-diccionario-de-metadatos"><span class="header-section-number">3.2.4</span> Crear el SummarizedExperiment Utilizando el Diccionario de Metadatos</a></li>
+  <li><a href="#verificamos-summarizedexperiment" id="toc-verificamos-summarizedexperiment" class="nav-link" data-scroll-target="#verificamos-summarizedexperiment"><span class="header-section-number">3.2.5</span> Verificamos SummarizedExperiment</a></li>
   </ul></li>
-  <li><a href="#control-de-calidad-de-los-datos" id="toc-control-de-calidad-de-los-datos" class="nav-link" data-scroll-target="#control-de-calidad-de-los-datos"><span class="header-section-number">2.4</span> Control de calidad de los datos</a>
+  <li><a href="#exploracion-del-dataset" id="toc-exploracion-del-dataset" class="nav-link" data-scroll-target="#exploracion-del-dataset"><span class="header-section-number">3.3</span> Exploracion del dataset</a>
   <ul class="collapse">
-  <li><a href="#control-de-calidad-de-los-metadatos-coldata" id="toc-control-de-calidad-de-los-metadatos-coldata" class="nav-link" data-scroll-target="#control-de-calidad-de-los-metadatos-coldata"><span class="header-section-number">2.4.1</span> Control de calidad de los metadatos (colData)</a></li>
-  <li><a href="#control-de-calidad-de-la-matriz-de-datos-cuantitativos-assay" id="toc-control-de-calidad-de-la-matriz-de-datos-cuantitativos-assay" class="nav-link" data-scroll-target="#control-de-calidad-de-la-matriz-de-datos-cuantitativos-assay"><span class="header-section-number">2.4.2</span> Control de Calidad de la Matriz de Datos Cuantitativos (assay)</a></li>
+  <li><a href="#informacion-del-estudio" id="toc-informacion-del-estudio" class="nav-link" data-scroll-target="#informacion-del-estudio"><span class="header-section-number">3.3.1</span> Informacion del estudio</a></li>
   </ul></li>
-  <li><a href="#exploracion-de-los-datos" id="toc-exploracion-de-los-datos" class="nav-link" data-scroll-target="#exploracion-de-los-datos"><span class="header-section-number">2.5</span> Exploracion de los datos</a>
+  <li><a href="#control-de-calidad-de-los-datos" id="toc-control-de-calidad-de-los-datos" class="nav-link" data-scroll-target="#control-de-calidad-de-los-datos"><span class="header-section-number">3.4</span> Control de calidad de los datos</a>
   <ul class="collapse">
-  <li><a href="#resumen-estadístico-de-la-matriz-cuantitativa" id="toc-resumen-estadístico-de-la-matriz-cuantitativa" class="nav-link" data-scroll-target="#resumen-estadístico-de-la-matriz-cuantitativa"><span class="header-section-number">2.5.1</span> Resumen Estadístico de la Matriz Cuantitativa</a></li>
-  <li><a href="#visualización-general-histograma-de-todos-los-valores" id="toc-visualización-general-histograma-de-todos-los-valores" class="nav-link" data-scroll-target="#visualización-general-histograma-de-todos-los-valores"><span class="header-section-number">2.5.2</span> Visualización General: Histograma de Todos los Valores</a></li>
-  <li><a href="#normalizacion-transformación-logarítmica" id="toc-normalizacion-transformación-logarítmica" class="nav-link" data-scroll-target="#normalizacion-transformación-logarítmica"><span class="header-section-number">2.5.3</span> Normalizacion: Transformación Logarítmica</a></li>
+  <li><a href="#control-de-calidad-de-los-metadatos-coldata" id="toc-control-de-calidad-de-los-metadatos-coldata" class="nav-link" data-scroll-target="#control-de-calidad-de-los-metadatos-coldata"><span class="header-section-number">3.4.1</span> Control de calidad de los metadatos (colData)</a></li>
+  <li><a href="#control-de-calidad-de-la-matriz-de-datos-cuantitativos-assay" id="toc-control-de-calidad-de-la-matriz-de-datos-cuantitativos-assay" class="nav-link" data-scroll-target="#control-de-calidad-de-la-matriz-de-datos-cuantitativos-assay"><span class="header-section-number">3.4.2</span> Control de Calidad de la Matriz de Datos Cuantitativos (assay)</a></li>
   </ul></li>
-  <li><a href="#análisis-de-los-datos" id="toc-análisis-de-los-datos" class="nav-link" data-scroll-target="#análisis-de-los-datos"><span class="header-section-number">2.6</span> Análisis de los datos</a></li>
-  <li><a href="#pregunta-a-responder-existen-diferencias-significativas-en-los-perfiles-metabólicos-del-tejido-cardiaco-entre-individuos-jóvenes-y-mayores-y-cuáles-son-las-principales-características-que-permiten-diferenciar-entre-estos-grupos" id="toc-pregunta-a-responder-existen-diferencias-significativas-en-los-perfiles-metabólicos-del-tejido-cardiaco-entre-individuos-jóvenes-y-mayores-y-cuáles-son-las-principales-características-que-permiten-diferenciar-entre-estos-grupos" class="nav-link" data-scroll-target="#pregunta-a-responder-existen-diferencias-significativas-en-los-perfiles-metabólicos-del-tejido-cardiaco-entre-individuos-jóvenes-y-mayores-y-cuáles-son-las-principales-características-que-permiten-diferenciar-entre-estos-grupos"><span class="header-section-number">2.7</span> Pregunta a responder: “¿Existen diferencias significativas en los perfiles metabólicos del tejido cardiaco entre individuos jóvenes y mayores, y cuáles son las principales características que permiten diferenciar entre estos grupos?”</a>
+  <li><a href="#exploracion-de-los-datos" id="toc-exploracion-de-los-datos" class="nav-link" data-scroll-target="#exploracion-de-los-datos"><span class="header-section-number">3.5</span> Exploracion de los datos</a>
   <ul class="collapse">
-  <li><a href="#análisis-de-componentes-principales-pca-usando-mixomics-de-los-datos-transformados" id="toc-análisis-de-componentes-principales-pca-usando-mixomics-de-los-datos-transformados" class="nav-link" data-scroll-target="#análisis-de-componentes-principales-pca-usando-mixomics-de-los-datos-transformados"><span class="header-section-number">2.7.1</span> Análisis de Componentes Principales PCA usando mixOmics de los datos transformados</a></li>
-  <li><a href="#análisis-discriminante-pls-usando-mixomics-de-los-datos-transformados" id="toc-análisis-discriminante-pls-usando-mixomics-de-los-datos-transformados" class="nav-link" data-scroll-target="#análisis-discriminante-pls-usando-mixomics-de-los-datos-transformados"><span class="header-section-number">2.7.2</span> Análisis Discriminante PLS usando mixOmics de los datos transformados</a></li>
-  <li><a href="#gráfico-de-tasa-de-error-de-clasificación" id="toc-gráfico-de-tasa-de-error-de-clasificación" class="nav-link" data-scroll-target="#gráfico-de-tasa-de-error-de-clasificación"><span class="header-section-number">2.7.3</span> Gráfico de Tasa de Error de Clasificación</a></li>
-  <li><a href="#grafico-pls-da-componentes-principales-1-y-2" id="toc-grafico-pls-da-componentes-principales-1-y-2" class="nav-link" data-scroll-target="#grafico-pls-da-componentes-principales-1-y-2"><span class="header-section-number">2.7.4</span> Grafico PLS-DA: Componentes principales 1 y 2):</a></li>
-  <li><a href="#graficar-el-círculo-de-correlación" id="toc-graficar-el-círculo-de-correlación" class="nav-link" data-scroll-target="#graficar-el-círculo-de-correlación"><span class="header-section-number">2.7.5</span> Graficar el círculo de correlación</a></li>
+  <li><a href="#resumen-estadístico-de-la-matriz-cuantitativa" id="toc-resumen-estadístico-de-la-matriz-cuantitativa" class="nav-link" data-scroll-target="#resumen-estadístico-de-la-matriz-cuantitativa"><span class="header-section-number">3.5.1</span> Resumen Estadístico de la Matriz Cuantitativa</a></li>
+  <li><a href="#visualización-general-histograma-de-todos-los-valores" id="toc-visualización-general-histograma-de-todos-los-valores" class="nav-link" data-scroll-target="#visualización-general-histograma-de-todos-los-valores"><span class="header-section-number">3.5.2</span> Visualización General: Histograma de Todos los Valores</a></li>
+  <li><a href="#normalizacion-transformación-logarítmica" id="toc-normalizacion-transformación-logarítmica" class="nav-link" data-scroll-target="#normalizacion-transformación-logarítmica"><span class="header-section-number">3.5.3</span> Normalizacion: Transformación Logarítmica</a></li>
+  </ul></li>
+  <li><a href="#análisis-de-los-datos" id="toc-análisis-de-los-datos" class="nav-link" data-scroll-target="#análisis-de-los-datos"><span class="header-section-number">3.6</span> Análisis de los datos</a></li>
+  <li><a href="#pregunta-a-responder-existen-diferencias-significativas-en-los-perfiles-metabólicos-del-tejido-cardiaco-entre-individuos-jóvenes-y-mayores-y-cuáles-son-las-principales-características-que-permiten-diferenciar-entre-estos-grupos" id="toc-pregunta-a-responder-existen-diferencias-significativas-en-los-perfiles-metabólicos-del-tejido-cardiaco-entre-individuos-jóvenes-y-mayores-y-cuáles-son-las-principales-características-que-permiten-diferenciar-entre-estos-grupos" class="nav-link" data-scroll-target="#pregunta-a-responder-existen-diferencias-significativas-en-los-perfiles-metabólicos-del-tejido-cardiaco-entre-individuos-jóvenes-y-mayores-y-cuáles-son-las-principales-características-que-permiten-diferenciar-entre-estos-grupos"><span class="header-section-number">3.7</span> Pregunta a responder: “¿Existen diferencias significativas en los perfiles metabólicos del tejido cardiaco entre individuos jóvenes y mayores, y cuáles son las principales características que permiten diferenciar entre estos grupos?”</a>
+  <ul class="collapse">
+  <li><a href="#análisis-de-componentes-principales-pca-usando-mixomics-de-los-datos-transformados" id="toc-análisis-de-componentes-principales-pca-usando-mixomics-de-los-datos-transformados" class="nav-link" data-scroll-target="#análisis-de-componentes-principales-pca-usando-mixomics-de-los-datos-transformados"><span class="header-section-number">3.7.1</span> Análisis de Componentes Principales PCA usando mixOmics de los datos transformados</a></li>
+  <li><a href="#análisis-discriminante-pls-usando-mixomics-de-los-datos-transformados" id="toc-análisis-discriminante-pls-usando-mixomics-de-los-datos-transformados" class="nav-link" data-scroll-target="#análisis-discriminante-pls-usando-mixomics-de-los-datos-transformados"><span class="header-section-number">3.7.2</span> Análisis Discriminante PLS usando mixOmics de los datos transformados</a></li>
+  <li><a href="#gráfico-de-tasa-de-error-de-clasificación" id="toc-gráfico-de-tasa-de-error-de-clasificación" class="nav-link" data-scroll-target="#gráfico-de-tasa-de-error-de-clasificación"><span class="header-section-number">3.7.3</span> Gráfico de Tasa de Error de Clasificación</a></li>
+  <li><a href="#grafico-pls-da-componentes-principales-1-y-2" id="toc-grafico-pls-da-componentes-principales-1-y-2" class="nav-link" data-scroll-target="#grafico-pls-da-componentes-principales-1-y-2"><span class="header-section-number">3.7.4</span> Grafico PLS-DA: Componentes principales 1 y 2):</a></li>
+  <li><a href="#graficar-el-círculo-de-correlación" id="toc-graficar-el-círculo-de-correlación" class="nav-link" data-scroll-target="#graficar-el-círculo-de-correlación"><span class="header-section-number">3.7.5</span> Graficar el círculo de correlación</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#discusion-y-conclusion" id="toc-discusion-y-conclusion" class="nav-link" data-scroll-target="#discusion-y-conclusion"><span class="header-section-number">4</span> Discusion y Conclusion</a>
+  <ul class="collapse">
+  <li><a href="#descarga-y-creación-del-summarizedexperiment" id="toc-descarga-y-creación-del-summarizedexperiment" class="nav-link" data-scroll-target="#descarga-y-creación-del-summarizedexperiment"><span class="header-section-number">4.1</span> Descarga y Creación del SummarizedExperiment</a></li>
+  <li><a href="#exploración-de-datos-del-estudio-de-ejemplo" id="toc-exploración-de-datos-del-estudio-de-ejemplo" class="nav-link" data-scroll-target="#exploración-de-datos-del-estudio-de-ejemplo"><span class="header-section-number">4.2</span> Exploración de Datos del Estudio de Ejemplo</a></li>
+  <li><a href="#histograma-de-valores-cuantitativos-antes-y-después-de-transformación" id="toc-histograma-de-valores-cuantitativos-antes-y-después-de-transformación" class="nav-link" data-scroll-target="#histograma-de-valores-cuantitativos-antes-y-después-de-transformación"><span class="header-section-number">4.3</span> Histograma de Valores Cuantitativos (Antes y Después de Transformación)</a>
+  <ul class="collapse">
+  <li><a href="#análisis-pca" id="toc-análisis-pca" class="nav-link" data-scroll-target="#análisis-pca"><span class="header-section-number">4.3.1</span> Análisis PCA</a></li>
+  <li><a href="#análisis-pls-da" id="toc-análisis-pls-da" class="nav-link" data-scroll-target="#análisis-pls-da"><span class="header-section-number">4.3.2</span> Análisis PLS-DA</a></li>
+  <li><a href="#repositorio" id="toc-repositorio" class="nav-link" data-scroll-target="#repositorio"><span class="header-section-number">4.3.3</span> Repositorio</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -125,26 +180,173 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="abstract" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Abstract</h1>
-<p>En este documento, se describe el proceso para crear un objeto SummarizedExperiment a partir de datos de metabolómica descargados, utilizando R para preparar tanto los metadatos como los datos cuantitativos de manera estructurada y reproducible. El objetivo era organizar los datos fenotópicos y cuantitativos para poder realizar análisis ómicos avanzados. # Objetivos del Estudio</p>
+<section id="abstracto" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Abstracto</h1>
+<p>Este informe describe la creación de un objeto SummarizedExperiment a partir de datos de metabolómica, el análisis se realiza en un documento Quarto y aprovechamos la herramienta params para hacer la descarga de Metabolomics Workbench de forma dinámica. Se utilizaron diferentes herramientas bioinformáticas en R para organizar los datos fenotípicos y cuantitativos de manera estructurada y reproducible. El objetivo es preparar los datos para su uso en análisis ómicos avanzados, tomando como ejemplo un estudio donde se realiza análisis de datos con sus resultados. Todo esto se crea dentro de un proyecto en R y se utiliza GitHub como repositorio. # Objetivos del Estudio ## Objetivo General</p>
+<p>El objetivo general es crear un SummarizedExperiment a partir de los datos descargados y analizar un estudio multivariante.</p>
+<section id="objetivos-específicos" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="objetivos-específicos"><span class="header-section-number">1.1</span> Objetivos Específicos</h2>
+<p>Descarga de datos desde URLs de forma dinámica.</p>
+<p>Creación del SummarizedExperiment con la información descargada.</p>
+<p>Exploración de los datos de un estudio de ejemplo.</p>
+<p>Presentación de los resultados del estudio de ejemplo.</p>
+</section>
+<section id="objetivo-del-estudio" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="objetivo-del-estudio"><span class="header-section-number">1.2</span> Objetivo del Estudio</h2>
+<p>El objetivo principal de este estudio es explorar si existen diferencias significativas en los perfiles metabólicos del tejido cardiaco entre individuos jóvenes y mayores, y determinar los metabolitos que contribuyen a esta diferenciación.</p>
+</section>
 </section>
 <section id="materiales-y-métodos" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Materiales y Métodos</h1>
+<section id="datos-utilizados" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="datos-utilizados"><span class="header-section-number">2.1</span> Datos Utilizados</h2>
+<p>Datos Cuantitativos: Se descargaron los datos de metabolómica utilizando el siguiente enlace del params dataset_url</p>
+<p>Metadatos: Se descargaron desde Metadatos del estudio del params metadata_url:</p>
+</section>
+<section id="herramientas-y-librerías" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="herramientas-y-librerías"><span class="header-section-number">2.2</span> Herramientas y Librerías</h2>
+<p>Se utilizaron las siguientes herramientas en R:</p>
+<p>SummarizedExperiment para estructurar los datos.</p>
+<p>mixOmics para realizar el análisis de componentes principales y PLS-DA.</p>
+<p>ggplot2 para visualización de datos.</p>
+</section>
+<section id="procedimiento-general" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="procedimiento-general"><span class="header-section-number">2.3</span> Procedimiento General</h2>
+<p>Descarga y Validación de Datos: Se descargaron los datos y metadatos asegurando que los identificadores coincidieran, evitando inconsistencias.</p>
+<p>Creación del Objeto SummarizedExperiment: Los datos se estructuraron de forma que las filas representaran metabolitos y las columnas muestras. Se limpiaron y estandarizaron los metadatos.</p>
+<p>Transformación Logarítmica: Para reducir el sesgo hacia la derecha en la distribución de los valores, se aplicó una transformación logarítmica a los datos cuantitativos.</p>
+<p>Análisis PCA y PLS-DA: Se realizaron análisis PCA para identificar variabilidad en los grupos y PLS-DA para determinar los metabolitos más discriminantes</p>
+</section>
+</section>
+<section id="resultados" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Resultados</h1>
 <p>Cargar Librerías Necesarias</p>
-<section id="descarga-de-los-datos-desde-el-repositorio-metabolomicsworkbench" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="descarga-de-los-datos-desde-el-repositorio-metabolomicsworkbench"><span class="header-section-number">2.1</span> Descarga de los datos desde el repositorio “metabolomicsWorkbench”</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Función para instalar y cargar paquetes</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>load_or_install <span class="ot">&lt;-</span> <span class="cf">function</span>(pkg) {</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(pkg, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">message</span>(<span class="fu">sprintf</span>(<span class="st">"Instalando el paquete: %s"</span>, pkg))</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">install.packages</span>(pkg, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">suppressPackageStartupMessages</span>(<span class="fu">library</span>(pkg, <span class="at">character.only =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Lista de paquetes necesarios</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>packages <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"here"</span>, <span class="st">"SummarizedExperiment"</span>, <span class="st">"httr"</span>, <span class="st">"rvest"</span>, <span class="st">"pheatmap"</span>, <span class="st">"tidyr"</span>,<span class="st">"impute"</span>, <span class="st">"ggplot2"</span>, <span class="st">"gridExtra"</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalar y cargar todos los paquetes necesarios</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">invisible</span>(<span class="fu">lapply</span>(packages, load_or_install))</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalar mixOmics desde Bioconductor si aún no está instalado</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"mixOmics"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"BiocManager"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">message</span>(<span class="st">"Instalando BiocManager para instalar mixOmics"</span>)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">"BiocManager"</span>)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  BiocManager<span class="sc">::</span><span class="fu">install</span>(<span class="st">"mixOmics"</span>)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Cargar mixOmics</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressPackageStartupMessages</span>(<span class="fu">library</span>(mixOmics))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<section id="descarga-de-los-datos-desde-el-repositorio-metabolomicsworkbench" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="descarga-de-los-datos-desde-el-repositorio-metabolomicsworkbench"><span class="header-section-number">3.1</span> Descarga de los datos desde el repositorio “metabolomicsWorkbench”</h2>
 <p>Para nuestro trabajo seleccionamos obtener la informacion desde el repositorio a travez de la descarga directa, usando los URLs, esta parte del trabajo es de froma dinamica por lo que creamos un archivo en quarto que nos permita manejar los params: “dataset_url y metadata_url”, con dataset_url obtendermos los datos para “assay”, “colData” y “rowData” y con metadata_url obtendremos la infrormacion de los metadatos asociados al conjunto de datos, este codigo esta preparado para recibir datos en formato plano .txt y HTML</p>
 <p>El codigo maneja: * La cracion de la carpeta “data” si no existe. Guarda los archivos descargados y organizar el proyecto. * A partir de ambas URLs (dataset_url y metadata_url), se extrae un identificador único del estudio mediante una expresión regular (ST\d{6}). Este identificador se compara entre ambos enlaces para verificar que efectivamente corresponden al mismo estudio. Si los identificadores no coinciden, se detiene el proceso y se muestra un mensaje de error al usuario, indicando la discrepancia. Esto es fundamental para asegurar la coherencia en los datos descargados. * Asignación de Nombres a los Archivos: Una vez verificado el identificador del estudio, se genera un nombre de archivo único basado en este ID * Descarga de los archivos * Durante el proceso se manejan mensajes y excepciones: * Se considero evitar descargas innecesarias y sobreescribir informacion</p>
-<section id="preparacion-para-la-descarga" class="level3" data-number="2.1.1">
-<h3 data-number="2.1.1" class="anchored" data-anchor-id="preparacion-para-la-descarga"><span class="header-section-number">2.1.1</span> Preparacion para la descarga</h3>
-</section>
-<section id="descargar-datos-del-estudio" class="level3" data-number="2.1.2">
-<h3 data-number="2.1.2" class="anchored" data-anchor-id="descargar-datos-del-estudio"><span class="header-section-number">2.1.2</span> Descargar Datos del Estudio</h3>
-</section>
-<section id="leer-los-datos-y-revisar-su-estructura" class="level3" data-number="2.1.3">
-<h3 data-number="2.1.3" class="anchored" data-anchor-id="leer-los-datos-y-revisar-su-estructura"><span class="header-section-number">2.1.3</span> Leer los Datos y Revisar su Estructura</h3>
+<section id="preparacion-para-la-descarga" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="preparacion-para-la-descarga"><span class="header-section-number">3.1.1</span> Preparacion para la descarga</h3>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>dataset_url <span class="ot">&lt;-</span> params<span class="sc">$</span>dataset_url</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>metadata_url <span class="ot">&lt;-</span> params<span class="sc">$</span>metadata_url</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Definir y crear la carpeta de salida si no existe</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>output_folder <span class="ot">&lt;-</span> <span class="fu">file.path</span>(here<span class="sc">::</span><span class="fu">here</span>(), <span class="st">"data"</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">dir.exists</span>(output_folder)) {</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dir.create</span>(output_folder, <span class="at">showWarnings =</span> <span class="cn">FALSE</span>, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(<span class="st">"[INFO] Carpeta de salida creada: "</span>, output_folder)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(<span class="st">"[INFO] Carpeta de salida ya existente: "</span>, output_folder)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Expresión regular para extraer el ID del estudio</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>study_id_pattern <span class="ot">&lt;-</span> <span class="st">"ST</span><span class="sc">\\</span><span class="st">d{6}"</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Extraer y comparar los identificadores del estudio de ambas URLs</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"[INFO] Extrayendo identificador de estudio de las URLs proporcionadas..."</span>)</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>dataset_study_id <span class="ot">&lt;-</span> <span class="fu">regmatches</span>(dataset_url, <span class="fu">regexpr</span>(study_id_pattern, dataset_url))</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>metadata_study_id <span class="ot">&lt;-</span> <span class="fu">regmatches</span>(metadata_url, <span class="fu">regexpr</span>(study_id_pattern, metadata_url))</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Verificar si los identificadores de estudio coinciden</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">identical</span>(dataset_study_id, metadata_study_id)) {</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>  study_id <span class="ot">&lt;-</span> dataset_study_id  <span class="co"># Asignar el ID de estudio si coinciden</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(<span class="st">"[ÉXITO] Identificador de estudio verificado correctamente: "</span>, study_id)</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">"[ERROR] Las URLs proporcionadas no corresponden al mismo estudio. Verifique los parámetros.</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>       <span class="st">"[DEBUG] ID del dataset: "</span>, dataset_study_id, <span class="st">" | ID de metadatos: "</span>, metadata_study_id)</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="descargar-datos-del-estudio" class="level3" data-number="3.1.2">
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="descargar-datos-del-estudio"><span class="header-section-number">3.1.2</span> Descargar Datos del Estudio</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generar un nombre de archivo compatible y ruta completa</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>dataset_filename <span class="ot">&lt;-</span> <span class="fu">sprintf</span>(<span class="st">"dataset_%s.txt"</span>, study_id)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>dataset_filepath <span class="ot">&lt;-</span> <span class="fu">file.path</span>(output_folder, dataset_filename)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Descargar el archivo si aún no existe en el sistema de archivos</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">file.exists</span>(dataset_filepath)) {</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(<span class="st">"Descargando el archivo desde "</span>, dataset_url, <span class="st">"..."</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tryCatch</span>(</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>      <span class="fu">download.file</span>(dataset_url, <span class="at">destfile =</span> dataset_filepath, <span class="at">mode =</span> <span class="st">"wb"</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (<span class="sc">!</span><span class="fu">file.exists</span>(dataset_filepath)) <span class="fu">stop</span>(<span class="st">"Error: No se pudo descargar el archivo."</span>)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    },</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">error =</span> <span class="cf">function</span>(e) {</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>      <span class="fu">stop</span>(<span class="st">"Ocurrió un error durante la descarga: "</span>, e<span class="sc">$</span>message)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(<span class="st">"El archivo ya ha sido descargado previamente."</span>)</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co">#  Cargar el archivo de datos</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">tryCatch</span>(</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>  {</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">read.delim</span>(dataset_filepath, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>  },</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">error =</span> <span class="cf">function</span>(e) {</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"[ERROR] No se pudo cargar el archivo de datos: "</span>, e<span class="sc">$</span>message)</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="leer-los-datos-y-revisar-su-estructura" class="level3" data-number="3.1.3">
+<h3 data-number="3.1.3" class="anchored" data-anchor-id="leer-los-datos-y-revisar-su-estructura"><span class="header-section-number">3.1.3</span> Leer los Datos y Revisar su Estructura</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verificar las dimensiones del dataset</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>n_filas <span class="ot">&lt;-</span> <span class="fu">nrow</span>(datos)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>n_columnas <span class="ot">&lt;-</span> <span class="fu">ncol</span>(datos)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"[INFO] Número de muestras (filas): "</span>, n_filas)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"[INFO] Número de metabolitos u otras variables (columnas): "</span>, n_columnas)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Mostrar solo las primeras 5 filas y las primeras 10 columnas para un resumen compacto</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>resumen_datos <span class="ot">&lt;-</span> datos[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="fu">min</span>(<span class="dv">5</span>, n_columnas)]</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"[INFO] Resumen del dataset (primeras 5 filas y hasta 5 columnas):"</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Usando knitr::kable() para tabla</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(resumen_datos, <span class="at">caption =</span> <span class="st">"Resumen del Dataset: Primeras 5 Filas y 5 Columnas"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Resumen del Dataset: Primeras 5 Filas y 5 Columnas</caption>
@@ -206,63 +408,185 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </section>
 </section>
-<section id="creacion-de-summarizedexperiment" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="creacion-de-summarizedexperiment"><span class="header-section-number">2.2</span> Creacion de SummarizedExperiment</h2>
+<section id="creacion-de-summarizedexperiment" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="creacion-de-summarizedexperiment"><span class="header-section-number">3.2</span> Creacion de SummarizedExperiment</h2>
 <p>Para crar el SummarizedExperiment tenemos que tener en cuenta lo siguiente: Las muestas estan represenadas en la filas y las variables en columnas para cumplir con la estructura del SummarizedExperiment transponemos la matriz de datos.</p>
 <p>La columna group contenía información fenotípica agrupada, como la fuente de la muestra (source), el sexo (sex), y el grupo de edad (age_group). Se utilizó la función tidyr::separate() para dividir esta columna en tres columnas distintas. Adicionalmente, se limpiaron los valores de cada columna para eliminar los prefijos (“Sample source:”, “Sex:”, “Age group:”) y se trató cualquier valor faltante, reemplazando con NA cuando fuera necesario.</p>
 <p>Las columnas fueron renombradas de forma consistente como Met_1, Met_2, etc., para hacer que el conjunto de datos fuera más comprensible y organizado.</p>
 <p>Los metadatos (colData) se estructuraron utilizando las columnas Sample, source, sex, y age_group. La columna Sample fue eliminada del colData como columna independiente y, en cambio, se utilizó como identificador (nombres de fila) para evitar redundancias. Los datos cuantitativos de los metabolitos (assay) se organizaron en una matriz, donde las muestras fueron establecidas como columnas y los metabolitos como filas.</p>
 <p>Finalmente, se utilizó la función SummarizedExperiment() del paquete SummarizedExperiment para crear el objeto.</p>
+<section id="creacion-de-assays-y-coldata-para-el-summarizedexperiment" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="creacion-de-assays-y-coldata-para-el-summarizedexperiment"><span class="header-section-number">3.2.1</span> Creacion de “assays” y “colData” para el SummarizedExperiment</h3>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "Sample source:Heart | Sex:M | Age group:young"
-[2] "Sample source:Heart | Sex:F | Age group:young"
-[3] "Sample source:Heart | Sex:F | Age group:old"  
-[4] "Sample source:Heart | Sex:M | Age group:old"  </code></pre>
-</div>
-</div>
-<section id="creacion-de-assays-y-coldata-para-el-summarizedexperiment" class="level3" data-number="2.2.1">
-<h3 data-number="2.2.1" class="anchored" data-anchor-id="creacion-de-assays-y-coldata-para-el-summarizedexperiment"><span class="header-section-number">2.2.1</span> Creacion de “assays” y “colData” para el SummarizedExperiment</h3>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>DataFrame with 23 rows and 3 columns
-             source         sex   age_group
-        &lt;character&gt; &lt;character&gt; &lt;character&gt;
-young_1       Heart           M       young
-young_2       Heart           M       young
-young_3       Heart           M       young
-young_4       Heart           M       young
-young_5       Heart           M       young
-...             ...         ...         ...
-old_9         Heart           M         old
-old_10        Heart           M         old
-old_11        Heart           F         old
-old_12        Heart           M         old
-old_13        Heart           F         old</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>       young_1  young_2  young_3  young_4  young_5
-Met_1   8.2889   9.1300   9.0886   7.9396   8.9580
-Met_2  36.8705  11.2341   7.6486  13.3439  19.0862
-Met_3   6.0068   3.2156   5.4975   4.6751  14.1100
-Met_4  17.0962  13.3342  10.1393  16.3568  29.6947
-Met_5 132.9647 145.3658 102.6457 160.7074 285.5223</code></pre>
-</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Paso 1: Renombrar las primeras dos columnas para mayor claridad</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(datos)[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Sample"</span>, <span class="st">"group"</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Paso 2: Eliminar espacios innecesarios y estandarizar formato</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>datos<span class="sc">$</span>group <span class="ot">&lt;-</span> <span class="fu">trimws</span>(datos<span class="sc">$</span>group)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Paso 3: Verificar si alguna fila tiene valores inesperados (faltan delimitadores)</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Para asegurarnos de que todas las filas tengan al menos dos delimitadores "|"</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>datos<span class="sc">$</span>group <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">grepl</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">|"</span>, datos<span class="sc">$</span>group),</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  datos<span class="sc">$</span>group,</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste</span>(datos<span class="sc">$</span>group, <span class="st">"| Sex:NA | Age group:NA"</span>) <span class="co"># Completar con 'NA' si no hay delimitadores</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Paso 4: Separación usando tidyr::separate(), completando faltantes a la derecha</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> datos <span class="sc">%&gt;%</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(group, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"source"</span>, <span class="st">"sex"</span>, <span class="st">"age_group"</span>), <span class="at">sep =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">|"</span>, <span class="at">remove =</span> <span class="cn">TRUE</span>, <span class="at">fill =</span> <span class="st">"right"</span>)</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Paso 5: Limpiar los valores para cada columna resultante</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Eliminar los prefijos que contienen información adicional</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>datos<span class="sc">$</span>source <span class="ot">&lt;-</span> <span class="fu">trimws</span>(<span class="fu">gsub</span>(<span class="st">"Sample source:"</span>, <span class="st">""</span>, datos<span class="sc">$</span>source))</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>datos<span class="sc">$</span>sex <span class="ot">&lt;-</span> <span class="fu">trimws</span>(<span class="fu">gsub</span>(<span class="st">"Sex:"</span>, <span class="st">""</span>, datos<span class="sc">$</span>sex))</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>datos<span class="sc">$</span>age_group <span class="ot">&lt;-</span> <span class="fu">trimws</span>(<span class="fu">gsub</span>(<span class="st">"Age group:"</span>, <span class="st">""</span>, datos<span class="sc">$</span>age_group))</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Paso 6: Reemplazar 'NA' strings que se generaron si la columna no existía originalmente</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>datos<span class="sc">$</span>sex[<span class="fu">is.na</span>(datos<span class="sc">$</span>sex) <span class="sc">|</span> datos<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">"NA"</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>datos<span class="sc">$</span>age_group[<span class="fu">is.na</span>(datos<span class="sc">$</span>age_group) <span class="sc">|</span> datos<span class="sc">$</span>age_group <span class="sc">==</span> <span class="st">"NA"</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Paso 7: Renombrar las columnas de los metabolitos para ser más comprensibles</span></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>num_metabolitos <span class="ot">&lt;-</span> <span class="fu">ncol</span>(datos) <span class="sc">-</span> <span class="dv">4</span>  <span class="co"># Descontar Sample, source, sex, age_group</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>nuevo_nombres <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"Met_"</span>, <span class="dv">1</span><span class="sc">:</span>num_metabolitos)</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(datos)[<span class="dv">5</span><span class="sc">:</span><span class="fu">ncol</span>(datos)] <span class="ot">&lt;-</span> nuevo_nombres</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Paso 8: Separar los metadatos y los datos cuantitativos</span></span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear 'col_data' con los metadatos, usando 'Sample' como rownames</span></span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>col_data <span class="ot">&lt;-</span> datos[, <span class="fu">c</span>(<span class="st">"Sample"</span>, <span class="st">"source"</span>, <span class="st">"sex"</span>, <span class="st">"age_group"</span>)]  <span class="co"># Metadatos</span></span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(col_data) <span class="ot">&lt;-</span> col_data<span class="sc">$</span>Sample  <span class="co"># Establecer la columna 'Sample' como nombres de fila</span></span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>col_data<span class="sc">$</span>Sample <span class="ot">&lt;-</span> <span class="cn">NULL</span>  <span class="co"># Eliminar la columna 'Sample' ya que está en rownames</span></span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear un data frame de datos cuantitativos con el resto de las columnas (excluyendo también la columna 'Sample')</span></span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>assay_data <span class="ot">&lt;-</span> datos[, <span class="sc">!</span>(<span class="fu">colnames</span>(datos) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Sample"</span>, <span class="st">"source"</span>, <span class="st">"sex"</span>, <span class="st">"age_group"</span>))]</span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a><span class="co"># Paso 9: Convertir los datos cuantitativos a una matriz y transponerla</span></span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>assay_matrix <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(assay_data)</span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>assay_matrix <span class="ot">&lt;-</span> <span class="fu">t</span>(assay_matrix)</span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a><span class="co"># Asegurarse de que los nombres de las columnas de assay_matrix coincidan con los nombres de las muestras</span></span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(assay_matrix) <span class="ot">&lt;-</span> <span class="fu">rownames</span>(col_data)</span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a><span class="co"># Paso 10: Crear el SummarizedExperiment con los datos cuantitativos y los metadatos</span></span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(SummarizedExperiment)</span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>se <span class="ot">&lt;-</span> <span class="fu">SummarizedExperiment</span>(</span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>  <span class="at">assays =</span> <span class="fu">list</span>(<span class="at">counts =</span> assay_matrix),</span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>  <span class="at">colData =</span> col_data</span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a><span class="co"># Mostrar un mensaje simple de confirmación</span></span>
+<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"El objeto SummarizedExperiment se ha creado correctamente."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>Se ha creado es SummarizedExperiment con los objetos “assays” y “colData”, ahora generaremo los metadatos del estudio y lo agregaremos al documento.</p>
 </section>
-<section id="descargar-metadatos-del-estudio" class="level3" data-number="2.2.2">
-<h3 data-number="2.2.2" class="anchored" data-anchor-id="descargar-metadatos-del-estudio"><span class="header-section-number">2.2.2</span> Descargar Metadatos del Estudio</h3>
-</section>
-<section id="procesar-los-metadatos-desde-html" class="level3" data-number="2.2.3">
-<h3 data-number="2.2.3" class="anchored" data-anchor-id="procesar-los-metadatos-desde-html"><span class="header-section-number">2.2.3</span> Procesar los Metadatos desde HTML</h3>
-</section>
-<section id="crear-el-summarizedexperiment-utilizando-el-diccionario-de-metadatos" class="level3" data-number="2.2.4">
-<h3 data-number="2.2.4" class="anchored" data-anchor-id="crear-el-summarizedexperiment-utilizando-el-diccionario-de-metadatos"><span class="header-section-number">2.2.4</span> Crear el SummarizedExperiment Utilizando el Diccionario de Metadatos</h3>
-</section>
-<section id="verificamos-summarizedexperiment" class="level3" data-number="2.2.5">
-<h3 data-number="2.2.5" class="anchored" data-anchor-id="verificamos-summarizedexperiment"><span class="header-section-number">2.2.5</span> Verificamos SummarizedExperiment</h3>
+<section id="descargar-metadatos-del-estudio" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="descargar-metadatos-del-estudio"><span class="header-section-number">3.2.2</span> Descargar Metadatos del Estudio</h3>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Definir el nombre y la ruta del archivo de metadatos</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>metadata_filename <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"metadata_"</span>, study_id, <span class="st">".html"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>metadata_filepath <span class="ot">&lt;-</span> <span class="fu">file.path</span>(output_folder, metadata_filename)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Asegurarse de que la carpeta de salida existe</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">dir.exists</span>(output_folder)) {</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dir.create</span>(output_folder, <span class="at">recursive =</span> <span class="cn">TRUE</span>, <span class="at">showWarnings =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Descargar el archivo de metadatos si aún no se ha descargado</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">file.exists</span>(metadata_filepath)) {</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(<span class="st">"Descargando el archivo de metadatos desde "</span>, metadata_url, <span class="st">"..."</span>)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  response <span class="ot">&lt;-</span> httr<span class="sc">::</span><span class="fu">GET</span>(metadata_url)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Verificar si la descarga fue exitosa</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (httr<span class="sc">::</span><span class="fu">status_code</span>(response) <span class="sc">&gt;=</span> <span class="dv">200</span> <span class="sc">&amp;&amp;</span> httr<span class="sc">::</span><span class="fu">status_code</span>(response) <span class="sc">&lt;</span> <span class="dv">300</span>) {</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">writeBin</span>(httr<span class="sc">::</span><span class="fu">content</span>(response, <span class="st">"raw"</span>), metadata_filepath)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">message</span>(<span class="st">"Metadatos descargados correctamente."</span>)</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">"Error al descargar los metadatos. Código de estado: "</span>, httr<span class="sc">::</span><span class="fu">status_code</span>(response))</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(<span class="st">"El archivo de metadatos ya existe en la ruta: "</span>, metadata_filepath)</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="procesar-los-metadatos-desde-html" class="level3" data-number="3.2.3">
+<h3 data-number="3.2.3" class="anchored" data-anchor-id="procesar-los-metadatos-desde-html"><span class="header-section-number">3.2.3</span> Procesar los Metadatos desde HTML</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#  Procesar los Metadatos desde HTML</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Procesar los Metadatos desde HTML y Guardarlos en una Lista</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>metadata_html <span class="ot">&lt;-</span> <span class="fu">read_html</span>(metadata_filepath)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Función auxiliar para manejar posibles elementos faltantes</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>extract_text_safe <span class="ot">&lt;-</span> <span class="cf">function</span>(html, xpath) {</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  element <span class="ot">&lt;-</span> html <span class="sc">%&gt;%</span> <span class="fu">html_element</span>(<span class="at">xpath =</span> xpath)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.null</span>(element)) {</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">NA</span>)  <span class="co"># Si el elemento no se encuentra, devolver NA</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">html_text</span>(element, <span class="at">trim =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Extraer campos específicos y almacenarlos en una lista</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>metadata_list <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">study_id =</span> study_id,</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">study_title =</span> <span class="fu">extract_text_safe</span>(metadata_html, <span class="st">"//td[b='Study Title']/following-sibling::td"</span>),</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">study_summary =</span> <span class="fu">extract_text_safe</span>(metadata_html, <span class="st">"//td[b='Study Summary']/following-sibling::td"</span>),</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">institute =</span> <span class="fu">extract_text_safe</span>(metadata_html, <span class="st">"//td[b='Institute']/following-sibling::td"</span>),</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">department =</span> <span class="fu">extract_text_safe</span>(metadata_html, <span class="st">"//td[b='Department']/following-sibling::td"</span>),</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">laboratory =</span> <span class="fu">extract_text_safe</span>(metadata_html, <span class="st">"//td[b='Laboratory']/following-sibling::td"</span>),</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">last_name =</span> <span class="fu">extract_text_safe</span>(metadata_html, <span class="st">"//td[b='Last Name']/following-sibling::td"</span>),</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">first_name =</span> <span class="fu">extract_text_safe</span>(metadata_html, <span class="st">"//td[b='First Name']/following-sibling::td"</span>),</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>  <span class="at">address =</span> <span class="fu">extract_text_safe</span>(metadata_html, <span class="st">"//td[b='Address']/following-sibling::td"</span>),</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">contact_email =</span> <span class="fu">extract_text_safe</span>(metadata_html, <span class="st">"//td[b='Email']/following-sibling::td"</span>),</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">submit_date =</span> <span class="fu">extract_text_safe</span>(metadata_html, <span class="st">"//td[b='Submit Date']/following-sibling::td"</span>),</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">release_date =</span> <span class="fu">extract_text_safe</span>(metadata_html, <span class="st">"//td[b='Release Date']/following-sibling::td"</span>),</span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">num_groups =</span> <span class="fu">extract_text_safe</span>(metadata_html, <span class="st">"//td[b='Num Groups']/following-sibling::td"</span>) <span class="sc">%&gt;%</span> <span class="fu">as.numeric</span>(),</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>  <span class="at">total_subjects =</span> <span class="fu">extract_text_safe</span>(metadata_html, <span class="st">"//td[b='Total Subjects']/following-sibling::td"</span>) <span class="sc">%&gt;%</span> <span class="fu">as.numeric</span>(),</span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>  <span class="at">num_males =</span> <span class="fu">extract_text_safe</span>(metadata_html, <span class="st">"//td[b='Num Males']/following-sibling::td"</span>) <span class="sc">%&gt;%</span> <span class="fu">as.numeric</span>(),</span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>  <span class="at">num_females =</span> <span class="fu">extract_text_safe</span>(metadata_html, <span class="st">"//td[b='Num Females']/following-sibling::td"</span>) <span class="sc">%&gt;%</span> <span class="fu">as.numeric</span>()</span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="crear-el-summarizedexperiment-utilizando-el-diccionario-de-metadatos" class="level3" data-number="3.2.4">
+<h3 data-number="3.2.4" class="anchored" data-anchor-id="crear-el-summarizedexperiment-utilizando-el-diccionario-de-metadatos"><span class="header-section-number">3.2.4</span> Crear el SummarizedExperiment Utilizando el Diccionario de Metadatos</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear el objeto SummarizedExperiment</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>se <span class="ot">&lt;-</span> <span class="fu">SummarizedExperiment</span>(</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">assays =</span> <span class="fu">list</span>(<span class="at">counts =</span> assay_matrix),  <span class="co"># Datos cuantitativos de los metabolitos (matriz)</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">colData =</span> col_data                     <span class="co"># Metadatos de las muestras ("Sample", "Group")</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Añadir los metadatos al objeto SummarizedExperiment</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="fu">metadata</span>(se) <span class="ot">&lt;-</span> metadata_list</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Verificar que los metadatos se han agregado correctamente</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"Metadatos añadidos al objeto SummarizedExperiment"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="verificamos-summarizedexperiment" class="level3" data-number="3.2.5">
+<h3 data-number="3.2.5" class="anchored" data-anchor-id="verificamos-summarizedexperiment"><span class="header-section-number">3.2.5</span> Verificamos SummarizedExperiment</h3>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verificar 'colData' </span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"Resumen de los metadatos en SummarizedExperiment:"</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">colData</span>(se))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>DataFrame with 23 rows and 3 columns
              source         sex   age_group
@@ -279,6 +603,12 @@ old_11        Heart           F         old
 old_12        Heart           M         old
 old_13        Heart           F         old</code></pre>
 </div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verificar las primeras filas de los datos cuantitativos </span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"Primeras filas de la matriz cuantitativa (Assay):"</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">assay</span>(se)[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])  <span class="co"># Mostrar las primeras 5 filas y 5 columnas de los datos cuantitativos</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>       young_1  young_2  young_3  young_4  young_5
 Met_1   8.2889   9.1300   9.0886   7.9396   8.9580
@@ -287,10 +617,45 @@ Met_3   6.0068   3.2156   5.4975   4.6751  14.1100
 Met_4  17.0962  13.3342  10.1393  16.3568  29.6947
 Met_5 132.9647 145.3658 102.6457 160.7074 285.5223</code></pre>
 </div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verificar los metadatos del estudio</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"Metadatos del estudio en SummarizedExperiment:"</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>study_metadata <span class="ot">&lt;-</span> <span class="fu">metadata</span>(se)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Mostrar cuántos elementos de metadatos existen en el objeto</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>metadata_count <span class="ot">&lt;-</span> <span class="fu">length</span>(study_metadata)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"Número total de elementos de metadatos en el objeto SummarizedExperiment: "</span>, metadata_count)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Verificar si hay algún metadato nulo (en caso de falta de información)</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>missing_metadata_count <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">sapply</span>(study_metadata, is.null))</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"Número de metadatos nulos o ausentes: "</span>, missing_metadata_count)</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Confirmar que todos los metadatos están presentes</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (missing_metadata_count <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(<span class="st">"Todos los metadatos están presentes y completos."</span>)</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(<span class="st">"Hay "</span>, missing_metadata_count, <span class="st">" metadatos ausentes en el objeto."</span>)</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>hemos detectadco que Assay contiene la fila “Sample” esto puede ocacionar problemas en el analisis ya que esta matriz solo debe contener datos numericos.</p>
 <p>#Eliminar fila salple</p>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>assay_matrix <span class="ot">&lt;-</span> <span class="fu">assay</span>(se)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="st">"Sample"</span> <span class="sc">%in%</span> <span class="fu">rownames</span>(assay_matrix)) {</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  assay_matrix <span class="ot">&lt;-</span> assay_matrix[<span class="sc">-</span><span class="fu">which</span>(<span class="fu">rownames</span>(assay_matrix) <span class="sc">==</span> <span class="st">"Sample"</span>), ]</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Paso 3: Actualizar el SummarizedExperiment con la nueva matriz cuantitativa sin la fila "Sample"</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="fu">assays</span>(se) <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">counts =</span> assay_matrix)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Paso 4: Verificar la matriz cuantitativa después de la eliminación</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"Primeras filas de la matriz cuantitativa después de eliminar la fila 'Sample':"</span>)</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">assay</span>(se)[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>       young_1  young_2  young_3  young_4  young_5
 Met_1   8.2889   9.1300   9.0886   7.9396   8.9580
@@ -299,6 +664,12 @@ Met_3   6.0068   3.2156   5.4975   4.6751  14.1100
 Met_4  17.0962  13.3342  10.1393  16.3568  29.6947
 Met_5 132.9647 145.3658 102.6457 160.7074 285.5223</code></pre>
 </div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verificar nuevamente los metadatos y la estructura del SummarizedExperiment</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"Resumen de los metadatos en SummarizedExperiment:"</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">colData</span>(se))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>DataFrame with 23 rows and 3 columns
              source         sex   age_group
@@ -315,69 +686,193 @@ old_11        Heart           F         old
 old_12        Heart           M         old
 old_13        Heart           F         old</code></pre>
 </div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verificar los metadatos del estudio</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"Metadatos del estudio en SummarizedExperiment:"</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>study_metadata <span class="ot">&lt;-</span> <span class="fu">metadata</span>(se)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Mostrar cuántos elementos de metadatos existen en el objeto</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>metadata_count <span class="ot">&lt;-</span> <span class="fu">length</span>(study_metadata)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"Número total de elementos de metadatos en el objeto SummarizedExperiment: "</span>, metadata_count)</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Verificar si hay algún metadato nulo (en caso de falta de información)</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>missing_metadata_count <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">sapply</span>(study_metadata, is.null))</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"Número de metadatos nulos o ausentes: "</span>, missing_metadata_count)</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Confirmar que todos los metadatos están presentes</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (missing_metadata_count <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(<span class="st">"Todos los metadatos están presentes y completos."</span>)</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(<span class="st">"Hay "</span>, missing_metadata_count, <span class="st">" metadatos ausentes en el objeto."</span>)</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 </section>
 </section>
-<section id="exploracion-del-dataset" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="exploracion-del-dataset"><span class="header-section-number">2.3</span> Exploracion del dataset</h2>
-<section id="informacion-del-estudio" class="level3" data-number="2.3.1">
-<h3 data-number="2.3.1" class="anchored" data-anchor-id="informacion-del-estudio"><span class="header-section-number">2.3.1</span> Informacion del estudio</h3>
+<section id="exploracion-del-dataset" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="exploracion-del-dataset"><span class="header-section-number">3.3</span> Exploracion del dataset</h2>
+<section id="informacion-del-estudio" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="informacion-del-estudio"><span class="header-section-number">3.3.1</span> Informacion del estudio</h3>
 <p>Aqui tambien se trabajo dinamicamente aprovechando la informacion almacenda en medatada del SummarizedExperiment</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Obtener los metadatos del estudio desde el objeto SummarizedExperiment</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>study_metadata <span class="ot">&lt;-</span> <span class="fu">metadata</span>(se)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"Vamos a analizar el estudio titulado: '"</span>, study_metadata<span class="sc">$</span>study_title, <span class="st">"'."</span>)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"Este estudio tiene el identificador: "</span>, study_metadata<span class="sc">$</span>study_id, <span class="st">"."</span>)</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Descripción del estudio</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Resumen del estudio:"</span>)</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(study_metadata<span class="sc">$</span>study_summary)) {</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(study_metadata<span class="sc">$</span>study_summary)</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Fechas importantes del estudio</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(study_metadata<span class="sc">$</span>submit_date) <span class="sc">&amp;&amp;</span> <span class="sc">!</span><span class="fu">is.null</span>(study_metadata<span class="sc">$</span>release_date)) {</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Fecha de envío del estudio: "</span>, study_metadata<span class="sc">$</span>submit_date)</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(<span class="st">"Fecha de publicación: "</span>, study_metadata<span class="sc">$</span>release_date)</span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Información sobre los grupos y sujetos del estudio</span></span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Este estudio cuenta con "</span>, study_metadata<span class="sc">$</span>num_groups, <span class="st">" grupos."</span>)</span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"El total de sujetos involucrados en el estudio es de: "</span>, study_metadata<span class="sc">$</span>total_subjects, <span class="st">" individuos."</span>)</span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"De estos, "</span>, study_metadata<span class="sc">$</span>num_males, <span class="st">" son hombres y "</span>, study_metadata<span class="sc">$</span>num_females, <span class="st">" son mujeres."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 </section>
 </section>
-<section id="control-de-calidad-de-los-datos" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="control-de-calidad-de-los-datos"><span class="header-section-number">2.4</span> Control de calidad de los datos</h2>
-<section id="control-de-calidad-de-los-metadatos-coldata" class="level3" data-number="2.4.1">
-<h3 data-number="2.4.1" class="anchored" data-anchor-id="control-de-calidad-de-los-metadatos-coldata"><span class="header-section-number">2.4.1</span> Control de calidad de los metadatos (colData)</h3>
+<section id="control-de-calidad-de-los-datos" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="control-de-calidad-de-los-datos"><span class="header-section-number">3.4</span> Control de calidad de los datos</h2>
+<section id="control-de-calidad-de-los-metadatos-coldata" class="level3" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="control-de-calidad-de-los-metadatos-coldata"><span class="header-section-number">3.4.1</span> Control de calidad de los metadatos (colData)</h3>
 <p>Verificar Valores Faltantes (NA) o (NULL) y que las categorias de las variables no contengan errores tipograficos.</p>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verificar valores faltantes</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"Número de valores NA por columna en colData:"</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">colSums</span>(<span class="fu">is.na</span>(<span class="fu">colData</span>(se))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0 0 0</code></pre>
 </div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verificar valores únicos para identificar inconsistencias</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"Valores únicos en 'sex':"</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">unique</span>(<span class="fu">colData</span>(se)<span class="sc">$</span>sex))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "M" "F"</code></pre>
 </div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"Valores únicos en 'age_group':"</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">unique</span>(<span class="fu">colData</span>(se)<span class="sc">$</span>age_group))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "young" "old"  </code></pre>
 </div>
 </div>
 </section>
-<section id="control-de-calidad-de-la-matriz-de-datos-cuantitativos-assay" class="level3" data-number="2.4.2">
-<h3 data-number="2.4.2" class="anchored" data-anchor-id="control-de-calidad-de-la-matriz-de-datos-cuantitativos-assay"><span class="header-section-number">2.4.2</span> Control de Calidad de la Matriz de Datos Cuantitativos (assay)</h3>
+<section id="control-de-calidad-de-la-matriz-de-datos-cuantitativos-assay" class="level3" data-number="3.4.2">
+<h3 data-number="3.4.2" class="anchored" data-anchor-id="control-de-calidad-de-la-matriz-de-datos-cuantitativos-assay"><span class="header-section-number">3.4.2</span> Control de Calidad de la Matriz de Datos Cuantitativos (assay)</h3>
 <p>Verificar si existen valores extemos o atipicos y tambien verificar la distribucion de los valores cuantitativos en busca de sesgo.</p>
-<section id="primero-revisaremso-el-tipo-de-datos" class="level4" data-number="2.4.2.1">
-<h4 data-number="2.4.2.1" class="anchored" data-anchor-id="primero-revisaremso-el-tipo-de-datos"><span class="header-section-number">2.4.2.1</span> Primero revisaremso el tipo de datos</h4>
+<section id="primero-revisaremso-el-tipo-de-datos" class="level4" data-number="3.4.2.1">
+<h4 data-number="3.4.2.1" class="anchored" data-anchor-id="primero-revisaremso-el-tipo-de-datos"><span class="header-section-number">3.4.2.1</span> Primero revisaremso el tipo de datos</h4>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extraer la matriz cuantitativa del objeto SummarizedExperiment</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>assay_matrix <span class="ot">&lt;-</span> <span class="fu">assay</span>(se)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Verificar los tipos de datos en la matriz cuantitativa</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"Verificando tipos de datos en la matriz cuantitativa:"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Verificando tipos de datos en la matriz cuantitativa:"</code></pre>
 </div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>tipo_de_datos <span class="ot">&lt;-</span> <span class="fu">sapply</span>(assay_matrix, class)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">unique</span>(tipo_de_datos))  <span class="co"># Mostrar los tipos de datos presentes en la matriz</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "numeric"</code></pre>
 </div>
 </div>
 <p>Si algún valor no es numérico, convertir toda la matriz a numérico</p>
 </section>
-<section id="transformado-a-datos-numericos" class="level4" data-number="2.4.2.2">
-<h4 data-number="2.4.2.2" class="anchored" data-anchor-id="transformado-a-datos-numericos"><span class="header-section-number">2.4.2.2</span> Transformado a datos numericos</h4>
+<section id="transformado-a-datos-numericos" class="level4" data-number="3.4.2.2">
+<h4 data-number="3.4.2.2" class="anchored" data-anchor-id="transformado-a-datos-numericos"><span class="header-section-number">3.4.2.2</span> Transformado a datos numericos</h4>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Si algún valor no es numérico, convertir toda la matriz a numérico</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">all</span>(tipo_de_datos <span class="sc">==</span> <span class="st">"numeric"</span>)) {</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"Algunos valores no son numéricos, convirtiendo a NA donde sea necesario..."</span>)</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Convertir todos los valores a numéricos, transformando valores no numéricos en NA</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>  assay_matrix_cleaned <span class="ot">&lt;-</span> <span class="fu">apply</span>(assay_matrix, <span class="dv">2</span>, <span class="cf">function</span>(x) <span class="fu">as.numeric</span>(<span class="fu">as.character</span>(x)))</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"Todos los datos son numéricos."</span>)</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>  assay_matrix_cleaned <span class="ot">&lt;-</span> assay_matrix</span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Todos los datos son numéricos."</code></pre>
 </div>
 </div>
 </section>
-<section id="identificar-valores-extremos-na-en-la-matriz-de" class="level4" data-number="2.4.2.3">
-<h4 data-number="2.4.2.3" class="anchored" data-anchor-id="identificar-valores-extremos-na-en-la-matriz-de"><span class="header-section-number">2.4.2.3</span> Identificar valores extremos, NA en la matriz de</h4>
+<section id="identificar-valores-extremos-na-en-la-matriz-de" class="level4" data-number="3.4.2.3">
+<h4 data-number="3.4.2.3" class="anchored" data-anchor-id="identificar-valores-extremos-na-en-la-matriz-de"><span class="header-section-number">3.4.2.3</span> Identificar valores extremos, NA en la matriz de</h4>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verificar cuántos valores NA hay en total en la matriz cuantitativa</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>na_count_total <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(assay_matrix))</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular el porcentaje de valores NA</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>total_values <span class="ot">&lt;-</span> <span class="fu">length</span>(assay_matrix)  <span class="co"># Número total de elementos en la matriz</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>na_percentage <span class="ot">&lt;-</span> (na_count_total <span class="sc">/</span> total_values) <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Mostrar el número total y el porcentaje de valores NA</span></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"Número total de valores NA en la matriz cuantitativa: "</span>, na_count_total)</span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">"Porcentaje de valores NA en la matriz cuantitativa: "</span>, <span class="fu">round</span>(na_percentage, <span class="dv">2</span>), <span class="st">"%"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 <p>el numero de valores NA es de 4 que representa un 0.1% este valor es lo suficiente bajo para poder ser solo eliminado sin afectar el analisis</p>
 </section>
-<section id="eliminar-filas-con-valores-na" class="level4" data-number="2.4.2.4">
-<h4 data-number="2.4.2.4" class="anchored" data-anchor-id="eliminar-filas-con-valores-na"><span class="header-section-number">2.4.2.4</span> Eliminar Filas con Valores NA</h4>
+<section id="eliminar-filas-con-valores-na" class="level4" data-number="3.4.2.4">
+<h4 data-number="3.4.2.4" class="anchored" data-anchor-id="eliminar-filas-con-valores-na"><span class="header-section-number">3.4.2.4</span> Eliminar Filas con Valores NA</h4>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Paso 1: Eliminar las filas que contienen valores NA en la matriz cuantitativa</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>assay_matrix_cleaned <span class="ot">&lt;-</span> assay_matrix[<span class="fu">complete.cases</span>(assay_matrix), ]</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Paso 2: Verificar la nueva dimensión de la matriz cuantitativa después de eliminar las filas con NA</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"Número de metabolitos después de eliminar filas con NA:"</span>, <span class="fu">nrow</span>(assay_matrix_cleaned)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Número de metabolitos después de eliminar filas con NA: 176"</code></pre>
 </div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"Número de muestras:"</span>, <span class="fu">ncol</span>(assay_matrix_cleaned)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Número de muestras: 23"</code></pre>
 </div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Paso 3: Verificar cuántos valores NA quedan después de la eliminación</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>na_count_after_removal <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(assay_matrix_cleaned))</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"Número total de valores NA después de eliminar filas con NA:"</span>, na_count_after_removal))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Número total de valores NA después de eliminar filas con NA: 0"</code></pre>
 </div>
@@ -385,14 +880,23 @@ old_13        Heart           F         old</code></pre>
 </section>
 </section>
 </section>
-<section id="exploracion-de-los-datos" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="exploracion-de-los-datos"><span class="header-section-number">2.5</span> Exploracion de los datos</h2>
-<section id="resumen-estadístico-de-la-matriz-cuantitativa" class="level3" data-number="2.5.1">
-<h3 data-number="2.5.1" class="anchored" data-anchor-id="resumen-estadístico-de-la-matriz-cuantitativa"><span class="header-section-number">2.5.1</span> Resumen Estadístico de la Matriz Cuantitativa</h3>
+<section id="exploracion-de-los-datos" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="exploracion-de-los-datos"><span class="header-section-number">3.5</span> Exploracion de los datos</h2>
+<section id="resumen-estadístico-de-la-matriz-cuantitativa" class="level3" data-number="3.5.1">
+<h3 data-number="3.5.1" class="anchored" data-anchor-id="resumen-estadístico-de-la-matriz-cuantitativa"><span class="header-section-number">3.5.1</span> Resumen Estadístico de la Matriz Cuantitativa</h3>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Resumen estadístico de la matriz cuantitativa después de la imputación</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"Resumen estadístico de la matriz cuantitativa :"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Resumen estadístico de la matriz cuantitativa :"</code></pre>
 </div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">summary</span>(<span class="fu">as.numeric</span>(assay_matrix_cleaned)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
     0.00     3.61    30.05   621.73   173.60 85543.64 </code></pre>
@@ -401,13 +905,24 @@ old_13        Heart           F         old</code></pre>
 <p>Los valores cuantitativos de la matriz oscilan entre un mínimo de 0.00 y un máximo de 85,543.64. Estos datos con gran variabilidad es comun en estudios de metabolómica, donde algunos metabolitos están presentes en concentraciones muy elevadas, mientras que la mayoría están en concentraciones más bajas.</p>
 <p>La media de los valores fue de 605.26, mientras que la mediana se situó en 28.06. Hay algunos valores extremadamente altos que están afectando el promedio general, lo que es reflejo de una distribución asimétrica con una “cola larga” hacia valores mayores como vemos en el siguiente grafico.</p>
 </section>
-<section id="visualización-general-histograma-de-todos-los-valores" class="level3" data-number="2.5.2">
-<h3 data-number="2.5.2" class="anchored" data-anchor-id="visualización-general-histograma-de-todos-los-valores"><span class="header-section-number">2.5.2</span> Visualización General: Histograma de Todos los Valores</h3>
+<section id="visualización-general-histograma-de-todos-los-valores" class="level3" data-number="3.5.2">
+<h3 data-number="3.5.2" class="anchored" data-anchor-id="visualización-general-histograma-de-todos-los-valores"><span class="header-section-number">3.5.2</span> Visualización General: Histograma de Todos los Valores</h3>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convertir la matriz a un data frame para graficar</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>data_frame <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Values =</span> <span class="fu">as.numeric</span>(assay_matrix_cleaned))</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear el histograma de los valores imputados</span></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_frame, <span class="fu">aes</span>(<span class="at">x =</span> Values)) <span class="sc">+</span></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">30</span>, <span class="at">fill =</span> <span class="st">"skyblue"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribución General de Todos los Valores Cuantitativos Imputados"</span>, <span class="at">x =</span> <span class="st">"Valor"</span>, <span class="at">y =</span> <span class="st">"Frecuencia"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Pec1_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Pec1_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -416,39 +931,90 @@ old_13        Heart           F         old</code></pre>
 <p>Este tipo de visualización, con tantos valores concentrados en la parte baja del eje x, dificulta la interpretación, ya que no permite ver claramente la variabilidad o patrones entre los valores más bajos y los más altos. Además, puede ser que haya valores atípicos (outliers) que estén causando la cola larga hacia la derecha, lo cual es importante investigar para no afectar el análisis posterior.</p>
 <p>Para reducir el sesgo hacia la derecha, realizaremos una transformación logarítmica en los valores de los metabolitos. Esto permitirá que los datos se distribuyan de manera más uniforme y que los valores extremos no tengan tanto peso.</p>
 </section>
-<section id="normalizacion-transformación-logarítmica" class="level3" data-number="2.5.3">
-<h3 data-number="2.5.3" class="anchored" data-anchor-id="normalizacion-transformación-logarítmica"><span class="header-section-number">2.5.3</span> Normalizacion: Transformación Logarítmica</h3>
+<section id="normalizacion-transformación-logarítmica" class="level3" data-number="3.5.3">
+<h3 data-number="3.5.3" class="anchored" data-anchor-id="normalizacion-transformación-logarítmica"><span class="header-section-number">3.5.3</span> Normalizacion: Transformación Logarítmica</h3>
 <p>Utilizamos log1p() para calcular log(1 + valor), evitando problemas de indefinición.</p>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>assay_matrix_log <span class="ot">&lt;-</span> <span class="fu">log1p</span>(assay_matrix_cleaned)</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Verificar un resumen estadístico de los datos transformados para comprobar el efecto</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"Resumen estadístico de la matriz cuantitativa transformada logarítmicamente:"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Resumen estadístico de la matriz cuantitativa transformada logarítmicamente:"</code></pre>
 </div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">summary</span>(<span class="fu">as.numeric</span>(assay_matrix_log)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
  0.002896  1.527495  3.435641  3.530163  5.162507 11.356794 </code></pre>
 </div>
 </div>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear el histograma de los valores originales</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>data_frame_original <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Values =</span> <span class="fu">as.numeric</span>(assay_matrix_cleaned))</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>histograma_original <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data_frame_original, <span class="fu">aes</span>(<span class="at">x =</span> Values)) <span class="sc">+</span></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">30</span>, <span class="at">fill =</span> <span class="st">"skyblue"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribución de Valores Originales"</span>, <span class="at">x =</span> <span class="st">"Valor"</span>, <span class="at">y =</span> <span class="st">"Frecuencia"</span>)</span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear el histograma de los valores transformados logarítmicamente</span></span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>data_frame_log <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Values =</span> <span class="fu">as.numeric</span>(assay_matrix_log))</span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>histograma_log <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data_frame_log, <span class="fu">aes</span>(<span class="at">x =</span> Values)) <span class="sc">+</span></span>
+<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">30</span>, <span class="at">fill =</span> <span class="st">"lightgreen"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribución de Valores Transformados (Log)"</span>, <span class="at">x =</span> <span class="st">"Valor Logarítmico"</span>, <span class="at">y =</span> <span class="st">"Frecuencia"</span>)</span>
+<span id="cb48-14"><a href="#cb48-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-15"><a href="#cb48-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Combinar los dos histogramas en una cuadrícula de 1x2 para comparar</span></span>
+<span id="cb48-16"><a href="#cb48-16" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(histograma_original, histograma_log, <span class="at">ncol =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Pec1_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Pec1_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Comparando ambos hitogramas (antes y despues) eñ sesgp se ha reducido cosiderablemente, siempre se ve la concentracion de valores cercanos a cero pero la distribucion general a mejorado. Observams un pico inicial entre 0 y 1 que es comun en los datos de metabolomica.</p>
+<p>Comparando ambos hitogramas (antes y despues) el sesgo se ha reducido cosiderablemente, siempre se ve la concentracion de valores cercanos a cero pero la distribucion general a mejorado. Observams un pico inicial entre 0 y 1 que es comun en los datos de metabolomica.</p>
 </section>
 </section>
-<section id="análisis-de-los-datos" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="análisis-de-los-datos"><span class="header-section-number">2.6</span> Análisis de los datos</h2>
+<section id="análisis-de-los-datos" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="análisis-de-los-datos"><span class="header-section-number">3.6</span> Análisis de los datos</h2>
 </section>
-<section id="pregunta-a-responder-existen-diferencias-significativas-en-los-perfiles-metabólicos-del-tejido-cardiaco-entre-individuos-jóvenes-y-mayores-y-cuáles-son-las-principales-características-que-permiten-diferenciar-entre-estos-grupos" class="level2" data-number="2.7">
-<h2 data-number="2.7" class="anchored" data-anchor-id="pregunta-a-responder-existen-diferencias-significativas-en-los-perfiles-metabólicos-del-tejido-cardiaco-entre-individuos-jóvenes-y-mayores-y-cuáles-son-las-principales-características-que-permiten-diferenciar-entre-estos-grupos"><span class="header-section-number">2.7</span> Pregunta a responder: “¿Existen diferencias significativas en los perfiles metabólicos del tejido cardiaco entre individuos jóvenes y mayores, y cuáles son las principales características que permiten diferenciar entre estos grupos?”</h2>
-<section id="análisis-de-componentes-principales-pca-usando-mixomics-de-los-datos-transformados" class="level3" data-number="2.7.1">
-<h3 data-number="2.7.1" class="anchored" data-anchor-id="análisis-de-componentes-principales-pca-usando-mixomics-de-los-datos-transformados"><span class="header-section-number">2.7.1</span> Análisis de Componentes Principales PCA usando mixOmics de los datos transformados</h3>
+<section id="pregunta-a-responder-existen-diferencias-significativas-en-los-perfiles-metabólicos-del-tejido-cardiaco-entre-individuos-jóvenes-y-mayores-y-cuáles-son-las-principales-características-que-permiten-diferenciar-entre-estos-grupos" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="pregunta-a-responder-existen-diferencias-significativas-en-los-perfiles-metabólicos-del-tejido-cardiaco-entre-individuos-jóvenes-y-mayores-y-cuáles-son-las-principales-características-que-permiten-diferenciar-entre-estos-grupos"><span class="header-section-number">3.7</span> Pregunta a responder: “¿Existen diferencias significativas en los perfiles metabólicos del tejido cardiaco entre individuos jóvenes y mayores, y cuáles son las principales características que permiten diferenciar entre estos grupos?”</h2>
+<section id="análisis-de-componentes-principales-pca-usando-mixomics-de-los-datos-transformados" class="level3" data-number="3.7.1">
+<h3 data-number="3.7.1" class="anchored" data-anchor-id="análisis-de-componentes-principales-pca-usando-mixomics-de-los-datos-transformados"><span class="header-section-number">3.7.1</span> Análisis de Componentes Principales PCA usando mixOmics de los datos transformados</h3>
 <p>Nos permitirá visualizar la variabilidad general en los datos y determinar si existen diferencias metabólicas que puedan separar a los individuos jóvenes de los mayores en el espacio de componentes principales. Si observamos una separación clara entre ambos grupos en el gráfico del PCA, esto sugerirá que existen patrones metabólicos diferenciados.</p>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Paso 1: Transponer la matriz cuantitativa para el PCA</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>x_pca <span class="ot">&lt;-</span> <span class="fu">t</span>(assay_matrix_cleaned)</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Paso 2: Realizar el PCA utilizando mixOmics</span></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>pca_result <span class="ot">&lt;-</span> <span class="fu">pca</span>(x_pca, <span class="at">ncomp =</span> <span class="dv">5</span>, <span class="at">center =</span> <span class="cn">TRUE</span>, <span class="at">scale =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Paso 3: Visualizar la varianza explicada por cada componente principal</span></span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>explained_variance <span class="ot">&lt;-</span> pca_result<span class="sc">$</span>prop_expl_var<span class="sc">$</span>X  <span class="co"># Acceder a la proporción de varianza explicada</span></span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Verificar y mostrar la varianza explicada por cada componente</span></span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(explained_variance)) {</span>
+<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"Porcentaje de varianza explicada por cada componente principal:"</span>)</span>
+<span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(explained_variance)) {</span>
+<span id="cb49-14"><a href="#cb49-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"PC"</span>, i, <span class="st">": "</span>, <span class="fu">round</span>(explained_variance[i] <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">2</span>), <span class="st">"%"</span>))</span>
+<span id="cb49-15"><a href="#cb49-15" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb49-16"><a href="#cb49-16" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb49-17"><a href="#cb49-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"No se pudo calcular la varianza explicada. Por favor, verifique los datos."</span>)</span>
+<span id="cb49-18"><a href="#cb49-18" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Porcentaje de varianza explicada por cada componente principal:"
 [1] "PC1: 45.22%"
@@ -457,23 +1023,49 @@ old_13        Heart           F         old</code></pre>
 [1] "PC4: 6.94%"
 [1] "PC5: 4.46%"</code></pre>
 </div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Paso 4: Graficar los dos primeros componentes principales</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plotIndiv</span>(pca_result, <span class="at">comp =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">group =</span> <span class="fu">colData</span>(se)<span class="sc">$</span>age_group, </span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">ind.names =</span> <span class="cn">FALSE</span>, <span class="at">ellipse =</span> <span class="cn">TRUE</span>, <span class="at">legend =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">title =</span> <span class="st">"PCA: Componentes principales 1 y 2"</span>,</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">size.title =</span> <span class="fu">rel</span>(<span class="fl">1.2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Pec1_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Pec1_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Hemos analizado las 5 primeras PCs, las primeras dos explicar el 59.81% de la varianza total, lo cual es significativo.</p>
 <p>El grafico muestra las dos primeras componenetes, vemos un numero de muestras young agurpadas en una region apartada a lo largo de PC1 con lo que podemos deducir una diferencia significativa entre los dos grupos en los metabolitos evaluados.</p>
-<section id="contribución-de-metabolitos-a-los-componentes-principales" class="level4" data-number="2.7.1.1">
-<h4 data-number="2.7.1.1" class="anchored" data-anchor-id="contribución-de-metabolitos-a-los-componentes-principales"><span class="header-section-number">2.7.1.1</span> Contribución de Metabolitos a los Componentes Principales</h4>
+<section id="contribución-de-metabolitos-a-los-componentes-principales" class="level4" data-number="3.7.1.1">
+<h4 data-number="3.7.1.1" class="anchored" data-anchor-id="contribución-de-metabolitos-a-los-componentes-principales"><span class="header-section-number">3.7.1.1</span> Contribución de Metabolitos a los Componentes Principales</h4>
 <p>Ahora vamos a explorar los metabolitos que mas contribuyen a la variabilidad de la PC1, para ello vamos a mostra los 10 loadings mas altos.</p>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Paso 1: Extraer los loadings del PCA</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>loadings <span class="ot">&lt;-</span> pca_result<span class="sc">$</span>loadings<span class="sc">$</span>X  <span class="co"># Los loadings para las variables (metabolitos)</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Paso 2: Mostrar los loadings más altos en PC1 (mayor contribución)</span></span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>loading_PC1 <span class="ot">&lt;-</span> loadings[, <span class="dv">1</span>]  <span class="co"># Loadings del primer componente principal</span></span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Ordenar los metabolitos por su contribución a PC1</span></span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>top_metabolites_PC1 <span class="ot">&lt;-</span> <span class="fu">sort</span>(loading_PC1, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Mostrar los 10 metabolitos con mayor contribución al PC1</span></span>
+<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"Metabolitos con mayor contribución al PC1 (posible diferencia entre young y old):"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Metabolitos con mayor contribución al PC1 (posible diferencia entre young y old):"</code></pre>
 </div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">head</span>(top_metabolites_PC1, <span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Met_68    Met_71   Met_113    Met_44    Met_90    Met_86    Met_31    Met_69 
 0.1097176 0.1074566 0.1074332 0.1068631 0.1066033 0.1064655 0.1064305 0.1063863 
@@ -483,44 +1075,115 @@ old_13        Heart           F         old</code></pre>
 </div>
 </section>
 </section>
-<section id="análisis-discriminante-pls-usando-mixomics-de-los-datos-transformados" class="level3" data-number="2.7.2">
-<h3 data-number="2.7.2" class="anchored" data-anchor-id="análisis-discriminante-pls-usando-mixomics-de-los-datos-transformados"><span class="header-section-number">2.7.2</span> Análisis Discriminante PLS usando mixOmics de los datos transformados</h3>
+<section id="análisis-discriminante-pls-usando-mixomics-de-los-datos-transformados" class="level3" data-number="3.7.2">
+<h3 data-number="3.7.2" class="anchored" data-anchor-id="análisis-discriminante-pls-usando-mixomics-de-los-datos-transformados"><span class="header-section-number">3.7.2</span> Análisis Discriminante PLS usando mixOmics de los datos transformados</h3>
 <p>Identificar metabolitos específicos que contribuyen a la diferenciación entre los grupos de edad. Esto nos permitirá responder qué características o metabolitos cambian de manera significativa con la edad.</p>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">t</span>(assay_matrix_log)</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Vector con las etiquetas de los grupos ('young' o 'old')</span></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">&lt;-</span> <span class="fu">colData</span>(se)<span class="sc">$</span>age_group  <span class="co"># Los grupos a los que pertenecen las muestras</span></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Paso 2: Realizar PLS-DA</span></span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>plsda_result <span class="ot">&lt;-</span> <span class="fu">plsda</span>(X, Y, <span class="at">ncomp =</span> <span class="dv">10</span>, <span class="at">scale =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">3105</span>)</span>
+<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a>perf.plsda_result <span class="ot">&lt;-</span> <span class="fu">perf</span>(plsda_result, <span class="at">validation =</span> <span class="st">'Mfold'</span>, <span class="at">folds =</span> <span class="dv">3</span>, <span class="at">progressBar =</span> <span class="cn">FALSE</span>, <span class="at">nrepeat =</span> <span class="dv">10</span>)         </span>
+<span id="cb56-10"><a href="#cb56-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-11"><a href="#cb56-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(perf.plsda_result, <span class="at">sd =</span> <span class="cn">TRUE</span>, <span class="at">legend.position =</span> <span class="st">'horizontal'</span>)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Pec1_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Pec1_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Paso 3: Visualizar los resultados del PLS-DA</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráfico de los componentes 1 y 2 para visualizar la separación entre los grupos</span></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plotIndiv</span>(plsda_result, <span class="at">comp =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">group =</span> Y,</span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">ind.names =</span> <span class="cn">FALSE</span>, <span class="at">ellipse =</span> <span class="cn">TRUE</span>, <span class="at">legend =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">title =</span> <span class="st">"PLS-DA: Componentes principales 1 y 2"</span>,</span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">size.title =</span> <span class="fu">rel</span>(<span class="fl">1.2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Pec1_files/figure-html/unnamed-chunk-24-2.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Pec1_files/figure-html/unnamed-chunk-23-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Paso 4: Graficar el círculo de correlación para analizar las variables (metabolitos)</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Paso 1: Extraer los loadings del primer componente principal desde el objeto PLS-DA</span></span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>loading_PC1 <span class="ot">&lt;-</span> plsda_result<span class="sc">$</span>loadings<span class="sc">$</span>X[, <span class="dv">1</span>]  <span class="co"># Extraer los loadings del primer componente principal</span></span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Paso 2: Seleccionar los Top 20 metabolitos con mayor valor absoluto del loading</span></span>
+<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a>top_metabolites_PC1 <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">sort</span>(<span class="fu">abs</span>(loading_PC1), <span class="at">decreasing =</span> <span class="cn">TRUE</span>))[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>]</span>
+<span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-8"><a href="#cb58-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Paso 3: Crear una versión filtrada de los datos para PLS-DA con los Top 20 metabolitos</span></span>
+<span id="cb58-9"><a href="#cb58-9" aria-hidden="true" tabindex="-1"></a>x_filtered <span class="ot">&lt;-</span> X[, top_metabolites_PC1]  <span class="co"># Filtrar la matriz original 'x' para que contenga solo los metabolitos seleccionados</span></span>
+<span id="cb58-10"><a href="#cb58-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-11"><a href="#cb58-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Paso 4: Realizar el PLS-DA con la versión filtrada de los datos</span></span>
+<span id="cb58-12"><a href="#cb58-12" aria-hidden="true" tabindex="-1"></a>plsda_filtered <span class="ot">&lt;-</span> <span class="fu">plsda</span>(x_filtered, Y, <span class="at">ncomp =</span> <span class="dv">2</span>, <span class="at">scale =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb58-13"><a href="#cb58-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-14"><a href="#cb58-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Paso 5: Graficar el círculo de correlación para los Top 20 metabolitos con los componentes 1 y 2</span></span>
+<span id="cb58-15"><a href="#cb58-15" aria-hidden="true" tabindex="-1"></a><span class="fu">plotVar</span>(plsda_filtered, <span class="at">comp =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>),</span>
+<span id="cb58-16"><a href="#cb58-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">var.names =</span> <span class="cn">TRUE</span>, <span class="at">title =</span> <span class="st">"PLS-DA: Círculo de Correlación de los Top 20 Metabolitos"</span>,</span>
+<span id="cb58-17"><a href="#cb58-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">cex =</span> <span class="dv">3</span>)  <span class="co"># Ajustar el tamaño de las etiquetas para hacerlas más legibles</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Pec1_files/figure-html/unnamed-chunk-24-3.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Pec1_files/figure-html/unnamed-chunk-23-3.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="gráfico-de-tasa-de-error-de-clasificación" class="level3" data-number="2.7.3">
-<h3 data-number="2.7.3" class="anchored" data-anchor-id="gráfico-de-tasa-de-error-de-clasificación"><span class="header-section-number">2.7.3</span> Gráfico de Tasa de Error de Clasificación</h3>
+<section id="gráfico-de-tasa-de-error-de-clasificación" class="level3" data-number="3.7.3">
+<h3 data-number="3.7.3" class="anchored" data-anchor-id="gráfico-de-tasa-de-error-de-clasificación"><span class="header-section-number">3.7.3</span> Gráfico de Tasa de Error de Clasificación</h3>
 <p>La tasa de error disminuye significativamente con PC1 y PC2 confirmando la importacia de estas componentes, a partir de la PC3 el error se mantiene estable con lo que añadir mas componentes no mejora mucho la clasificacion.</p>
 </section>
-<section id="grafico-pls-da-componentes-principales-1-y-2" class="level3" data-number="2.7.4">
-<h3 data-number="2.7.4" class="anchored" data-anchor-id="grafico-pls-da-componentes-principales-1-y-2"><span class="header-section-number">2.7.4</span> Grafico PLS-DA: Componentes principales 1 y 2):</h3>
+<section id="grafico-pls-da-componentes-principales-1-y-2" class="level3" data-number="3.7.4">
+<h3 data-number="3.7.4" class="anchored" data-anchor-id="grafico-pls-da-componentes-principales-1-y-2"><span class="header-section-number">3.7.4</span> Grafico PLS-DA: Componentes principales 1 y 2):</h3>
 <p>Los componentes 1 y 2 del PLS-DA parecen ser suficientes para capturar diferencias metabólicas entre los grupos young y old. La separación observada confirma que existen metabolitos clave que diferencian las dos poblaciones</p>
 </section>
-<section id="graficar-el-círculo-de-correlación" class="level3" data-number="2.7.5">
-<h3 data-number="2.7.5" class="anchored" data-anchor-id="graficar-el-círculo-de-correlación"><span class="header-section-number">2.7.5</span> Graficar el círculo de correlación</h3>
+<section id="graficar-el-círculo-de-correlación" class="level3" data-number="3.7.5">
+<h3 data-number="3.7.5" class="anchored" data-anchor-id="graficar-el-círculo-de-correlación"><span class="header-section-number">3.7.5</span> Graficar el círculo de correlación</h3>
 <p>Los metabolitos que se encuentran más alejados del centro del círculo tienen una mayor contribución al modelo de PLS-DA. En este caso, podemos observar que los metabolitos Met_23, Met_26, Met_27, Met_28, etc., están más alejados del origen. Estos metabolitos, al estar alejados, sugieren que tienen una fuerte correlación con los componentes principales seleccionados (PC1 y PC2) y, por tanto, juegan un papel importante en la separación entre los grupos young y old.</p>
+</section>
+</section>
+</section>
+<section id="discusion-y-conclusion" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Discusion y Conclusion</h1>
+<section id="descarga-y-creación-del-summarizedexperiment" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="descarga-y-creación-del-summarizedexperiment"><span class="header-section-number">4.1</span> Descarga y Creación del SummarizedExperiment</h2>
+<p>Se logró descargar de manera exitosa los datos cuantitativos y los metadatos desde URLs proporcionadas, utilizando params para hacer la descarga de forma dinámica. Posteriormente, se creó el objeto SummarizedExperiment, integrando los datos cuantitativos con los metadatos. Esto permitió una estructura ordenada y eficiente para el análisis multivariante posterior.</p>
+</section>
+<section id="exploración-de-datos-del-estudio-de-ejemplo" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="exploración-de-datos-del-estudio-de-ejemplo"><span class="header-section-number">4.2</span> Exploración de Datos del Estudio de Ejemplo</h2>
+<p>Se verificaron los valores faltantes y los tipos de datos en la matriz cuantitativa. Se observó que algunos datos presentaban valores faltantes, los cuales fueron eliminados o imputados según correspondiera. Se aplicó una transformación logarítmica a los datos cuantitativos para reducir el sesgo hacia la derecha, lo cual mejoró la distribución de los datos, facilitando el análisis multivariante.</p>
+</section>
+<section id="histograma-de-valores-cuantitativos-antes-y-después-de-transformación" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="histograma-de-valores-cuantitativos-antes-y-después-de-transformación"><span class="header-section-number">4.3</span> Histograma de Valores Cuantitativos (Antes y Después de Transformación)</h2>
+<p>La transformación logarítmica mejoró la distribución de los datos, reduciendo la concentración de valores en el rango bajo, lo cual ayudó a una mejor visualización y comprensión de la variabilidad de los datos.</p>
+<p>##Resultados del Análisis Multivariante (PCA y PLS-DA)</p>
+<section id="análisis-pca" class="level3" data-number="4.3.1">
+<h3 data-number="4.3.1" class="anchored" data-anchor-id="análisis-pca"><span class="header-section-number">4.3.1</span> Análisis PCA</h3>
+<p>Las dos primeras componentes principales explican el 59.81% de la variabilidad total de los datos. Esto demuestra que una gran parte de la variabilidad en los perfiles metabólicos puede ser capturada por solo dos componentes. Además, se observó una agrupación clara de los individuos jóvenes en el espacio de componentes principales, lo cual sugiere diferencias metabólicas significativas entre los grupos de edad.</p>
+</section>
+<section id="análisis-pls-da" class="level3" data-number="4.3.2">
+<h3 data-number="4.3.2" class="anchored" data-anchor-id="análisis-pls-da"><span class="header-section-number">4.3.2</span> Análisis PLS-DA</h3>
+<p>El análisis PLS-DA se utilizó para identificar los metabolitos que más contribuyen a la diferenciación entre individuos jóvenes y mayores. Los resultados mostraron que los componentes 1 y 2 del PLS-DA permiten una clara separación entre los dos grupos, confirmando la existencia de patrones metabólicos diferenciados.</p>
+</section>
+<section id="repositorio" class="level3" data-number="4.3.3">
+<h3 data-number="4.3.3" class="anchored" data-anchor-id="repositorio"><span class="header-section-number">4.3.3</span> Repositorio</h3>
+<p>Para obtener más información y el código: <a href="https://github.com/SulmaDubon/PEC1_Datos_Omicos.git">Repositorio en GitHub</a></p>
 </section>
 </section>
 </section>

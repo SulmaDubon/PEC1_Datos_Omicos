@@ -6,13 +6,16 @@ format:
   pdf:
     toc: true
     number-sections: true
-    code: false          
+    code: false  
+    toc-depth: 2 
+    echo: false  
+    link-citations: true      
   html:
     code-fold: true      
     toc: true            
     number-sections: true
+    echo: true
 execute:
-  echo: false           
   warning: false         
   message: true         
 params:
@@ -23,14 +26,12 @@ params:
 
 # Abstracto
 Este informe describe la creación de un objeto SummarizedExperiment a partir de datos de metabolómica, el análisis se realiza en un documento Quarto y aprovechamos la herramienta params para hacer la descarga de Metabolomics Workbench de forma dinámica. Se utilizaron diferentes herramientas bioinformáticas en R para organizar los datos fenotípicos y cuantitativos de manera estructurada y reproducible. El objetivo es preparar los datos para su uso en análisis ómicos avanzados, tomando como ejemplo un estudio donde se realiza análisis de datos con sus resultados. Todo esto se crea dentro de un proyecto en R y se utiliza GitHub como repositorio.
-
 # Objetivos del Estudio
-
 ## Objetivo General
 
 El objetivo general es crear un SummarizedExperiment a partir de los datos descargados y analizar un estudio multivariante.
 
-Objetivos Específicos
+## Objetivos Específicos
 
 Descarga de datos desde URLs de forma dinámica.
 
@@ -41,18 +42,15 @@ Exploración de los datos de un estudio de ejemplo.
 Presentación de los resultados del estudio de ejemplo.
 
 ## Objetivo del Estudio
-
 El objetivo principal de este estudio es explorar si existen diferencias significativas en los perfiles metabólicos del tejido cardiaco entre individuos jóvenes y mayores, y determinar los metabolitos que contribuyen a esta diferenciación.
 
 # Materiales y Métodos
 ## Datos Utilizados
-
 Datos Cuantitativos: Se descargaron los datos de metabolómica utilizando el siguiente enlace del params dataset_url
 
 Metadatos: Se descargaron desde Metadatos del estudio del params metadata_url:
 
 ## Herramientas y Librerías
-
 Se utilizaron las siguientes herramientas en R:
 
 SummarizedExperiment para estructurar los datos.
@@ -62,7 +60,6 @@ mixOmics para realizar el análisis de componentes principales y PLS-DA.
 ggplot2 para visualización de datos.
 
 ## Procedimiento General
-
 Descarga y Validación de Datos: Se descargaron los datos y metadatos asegurando que los identificadores coincidieran, evitando inconsistencias.
 
 Creación del Objeto SummarizedExperiment: Los datos se estructuraron de forma que las filas representaran metabolitos y las columnas muestras. Se limpiaron y estandarizaron los metadatos.
@@ -73,7 +70,6 @@ Análisis PCA y PLS-DA: Se realizaron análisis PCA para identificar variabilida
 
 
 # Resultados
-
 Cargar Librerías Necesarias
 ```{r}
 # Función para instalar y cargar paquetes
@@ -106,13 +102,11 @@ suppressPackageStartupMessages(library(mixOmics))
 ```
 
 ## Descarga de los datos desde el repositorio "metabolomicsWorkbench"
-
 Para nuestro trabajo seleccionamos obtener la informacion desde el repositorio a travez de la descarga directa, usando los URLs, esta parte del trabajo es de froma dinamica por lo que creamos un archivo en quarto que nos permita manejar los params: "dataset_url y metadata_url", con dataset_url obtendermos los datos para "assay", "colData" y "rowData" y con metadata_url obtendremos la infrormacion de los metadatos asociados al conjunto de datos, este codigo esta preparado para recibir datos en formato plano .txt y HTML
 
 El codigo maneja: \* La cracion de la carpeta "data" si no existe. Guarda los archivos descargados y organizar el proyecto. \* A partir de ambas URLs (dataset_url y metadata_url), se extrae un identificador único del estudio mediante una expresión regular (ST\\d{6}). Este identificador se compara entre ambos enlaces para verificar que efectivamente corresponden al mismo estudio. Si los identificadores no coinciden, se detiene el proceso y se muestra un mensaje de error al usuario, indicando la discrepancia. Esto es fundamental para asegurar la coherencia en los datos descargados. \* Asignación de Nombres a los Archivos: Una vez verificado el identificador del estudio, se genera un nombre de archivo único basado en este ID \* Descarga de los archivos \* Durante el proceso se manejan mensajes y excepciones: \* Se considero evitar descargas innecesarias y sobreescribir informacion
 
 ### Preparacion para la descarga
-
 ```{r}
 dataset_url <- params$dataset_url
 metadata_url <- params$metadata_url
@@ -145,8 +139,8 @@ if (identical(dataset_study_id, metadata_study_id)) {
 
 ```
 
-### Descargar Datos del Estudio
 
+### Descargar Datos del Estudio
 ```{r}
 # Generar un nombre de archivo compatible y ruta completa
 dataset_filename <- sprintf("dataset_%s.txt", study_id)
@@ -181,7 +175,6 @@ datos <- tryCatch(
 ```
 
 ### Leer los Datos y Revisar su Estructura
-
 ```{r}
 # Verificar las dimensiones del dataset
 n_filas <- nrow(datos)
@@ -209,10 +202,6 @@ Las columnas fueron renombradas de forma consistente como Met_1, Met_2, etc., pa
 Los metadatos (colData) se estructuraron utilizando las columnas Sample, source, sex, y age_group. La columna Sample fue eliminada del colData como columna independiente y, en cambio, se utilizó como identificador (nombres de fila) para evitar redundancias. Los datos cuantitativos de los metabolitos (assay) se organizaron en una matriz, donde las muestras fueron establecidas como columnas y los metabolitos como filas.
 
 Finalmente, se utilizó la función SummarizedExperiment() del paquete SummarizedExperiment para crear el objeto.
-
-```{r}
-print(unique(datos$group))
-```
 
 ### Creacion de "assays" y "colData" para el SummarizedExperiment
 
@@ -279,20 +268,11 @@ se <- SummarizedExperiment(
 # Mostrar un mensaje simple de confirmación
 message("El objeto SummarizedExperiment se ha creado correctamente.")
 
-# Verificar la estructura del SummarizedExperiment
-message("Resumen de los metadatos en SummarizedExperiment:")
-print(colData(se))
-
-message("Primeras filas de la matriz cuantitativa (Assay):")
-print(assay(se)[1:5, 1:5])  # Mostrar las primeras 5 filas y columnas de los datos cuantitativos
-
-
 ```
 
 Se ha creado es SummarizedExperiment con los objetos "assays" y "colData", ahora generaremo los metadatos del estudio y lo agregaremos al documento.
 
 ### Descargar Metadatos del Estudio
-
 ```{r}
 # Definir el nombre y la ruta del archivo de metadatos
 metadata_filename <- paste0("metadata_", study_id, ".html")
@@ -322,7 +302,6 @@ if (!file.exists(metadata_filepath)) {
 ```
 
 ### Procesar los Metadatos desde HTML
-
 ```{r}
 #  Procesar los Metadatos desde HTML
 # Procesar los Metadatos desde HTML y Guardarlos en una Lista
@@ -361,7 +340,6 @@ metadata_list <- list(
 ```
 
 ### Crear el SummarizedExperiment Utilizando el Diccionario de Metadatos
-
 ```{r}
 
 # Crear el objeto SummarizedExperiment
@@ -380,7 +358,6 @@ message("Metadatos añadidos al objeto SummarizedExperiment")
 ```
 
 ### Verificamos SummarizedExperiment
-
 ```{r}
 # Verificar 'colData' 
 message("Resumen de los metadatos en SummarizedExperiment:")
@@ -635,7 +612,7 @@ histograma_log <- ggplot(data_frame_log, aes(x = Values)) +
 grid.arrange(histograma_original, histograma_log, ncol = 2)
 ```
 
-Comparando ambos hitogramas (antes y despues) eñ sesgp se ha reducido cosiderablemente, siempre se ve la concentracion de valores cercanos a cero pero la distribucion general a mejorado. Observams un pico inicial entre 0 y 1 que es comun en los datos de metabolomica.
+Comparando ambos hitogramas (antes y despues) el sesgo se ha reducido cosiderablemente, siempre se ve la concentracion de valores cercanos a cero pero la distribucion general a mejorado. Observams un pico inicial entre 0 y 1 que es comun en los datos de metabolomica.
 
 ## Análisis de los datos
 
@@ -777,5 +754,9 @@ Las dos primeras componentes principales explican el 59.81% de la variabilidad t
 
 ### Análisis PLS-DA
 
-El análisis PLS-DA se utilizó para identificar los metabolitos que más contribuyen a la diferenciación entre individuos jóvenes y mayores. Los resultados mostraron que los componentes 1 y 2 del PLS-DA permiten una clara separación entre los dos grupos, confirmando la existencia de patrones metabólicos diferenciados. Los metabolitos identificados como contribuyentes principales a esta diferenciación serán útiles para futuros estudios orientados a entender los cambios metabólicos relacionados con la edad.
+El análisis PLS-DA se utilizó para identificar los metabolitos que más contribuyen a la diferenciación entre individuos jóvenes y mayores. Los resultados mostraron que los componentes 1 y 2 del PLS-DA permiten una clara separación entre los dos grupos, confirmando la existencia de patrones metabólicos diferenciados. 
+
+### Repositorio
+Para obtener más información y el código: [Repositorio en GitHub](https://github.com/SulmaDubon/PEC1_Datos_Omicos.git)
+
 
